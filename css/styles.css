@@ -1082,6 +1082,11 @@ footer {
     .hero-image {
         max-width: 300px;
     }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
 }
 
 /* Animation */
