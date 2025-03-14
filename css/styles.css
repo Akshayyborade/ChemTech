@@ -1070,6 +1070,18 @@ footer {
     .about-stats {
         grid-template-columns: 1fr;
     }
+    
+    .hero {
+        padding: 100px 0 50px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-image {
+        max-width: 300px;
+    }
 }
 
 /* Animation */
