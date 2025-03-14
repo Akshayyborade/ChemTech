@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chemtech Coating Solution</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        /* Example: Update hero section background with an external image */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)),
+                      url('https://source.unsplash.com/1600x900/?epoxy,industrial') center/cover no-repeat;
+            padding-top: 80px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-img">
+                    <svg viewBox="0 0 100 100" width="50" height="50">
+                        <circle cx="50" cy="50" r="40" fill="#3a6a01"/>
+                        <path d="M50 20 L60 50 L40 50 Z" fill="white"/>
+                        <path d="M50 80 L60 50 L40 50 Z" fill="white"/>
+                        <path d="M35 65 L50 40 L65 65 Z" fill="white" transform="rotate(180 50 52.5)"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>CHEMTECH COATING</h1>
+                    <p>QUALITY YOU CAN STAND ON</p>
+                </div>
+            </div>
+            <div class="menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>High Performance Epoxy Coating Solutions</h1>
+                <p>Professional epoxy flooring and waterproofing solutions for industrial, commercial, and residential applications. Quality you can trust, durability you can stand on.</p>
+                <a href="#contact" class="btn">Get a Quote</a>
+                <a href="#products" class="btn btn-outline">Our Products</a>
+            </div>
+            <div class="hero-image">
+                <!-- External image sourced from Unsplash -->
+                <img src="https://source.unsplash.com/800x600/?epoxy,floor" alt="High Performance Epoxy Flooring Example">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Epoxy Flooring</h3>
+                    <p>Professional epoxy floor coating for commercial and industrial spaces. Durable, chemical resistant, and easy to maintain.</p>
+                    <img src="https://source.unsplash.com/400x300/?epoxy,flooring" alt="Epoxy Flooring">
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Waterproofing</h3>
+                    <p>Comprehensive waterproofing solutions for roofs, basements, bathrooms, and other water-prone areas.</p>
+                    <img src="https://source.unsplash.com/400x300/?waterproofing,roof" alt="Waterproofing">
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Residential Solutions</h3>
+                    <p>Custom epoxy coating solutions for garage floors, kitchens, bathrooms, and decorative concrete surfaces.</p>
+                    <img src="https://source.unsplash.com/400x300/?epoxy,garage" alt="Residential Solutions">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Products</h2>
+            </div>
+            <div class="product-slider">
+                <div class="product-slide active">
+                    <!-- External epoxy resin image -->
+                    <img src="https://source.unsplash.com/800x600/?epoxy,resin" alt="High Performance Epoxy Resin">
+                    <div class="product-info">
+                        <h3>High Performance Epoxy Resin</h3>
+                        <p>Premium quality epoxy resin for industrial and commercial flooring applications. Excellent adhesion, chemical resistance, and durability.</p>
+                    </div>
+                </div>
+                <div class="product-slide">
+                    <!-- External epoxy hardener image -->
+                    <img src="https://source.unsplash.com/800x600/?epoxy,hardener" alt="Epoxy Hardener">
+                    <div class="product-info">
+                        <h3>Epoxy Hardener</h3>
+                        <p>Professional-grade hardener that ensures optimal curing time and maximum strength for epoxy coating applications.</p>
+                    </div>
+                </div>
+                <div class="product-slide">
+                    <!-- External pigment paste image -->
+                    <img src="https://source.unsplash.com/800x600/?epoxy,coating" alt="Pigment Paste">
+                    <div class="product-info">
+                        <h3>Pigment Paste</h3>
+                        <p>High-quality pigment pastes available in various colors for customized epoxy flooring solutions.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <span class="slider-dot active" data-slide="0"></span>
+                <span class="slider-dot" data-slide="1"></span>
+                <span class="slider-dot" data-slide="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Chemtech Coating Solution is a leading provider of high-performance epoxy coating and waterproofing solutions. With years of industry experience, we have established ourselves as a trusted partner for contractors, businesses, and homeowners alike.</p>
+                    <p>Our mission is to deliver superior quality products and exceptional service at competitive prices. We pride ourselves on our technical expertise, innovation, and commitment to customer satisfaction.</p>
+                    <p>All our products are manufactured using the highest quality raw materials and undergo rigorous quality control to ensure consistent performance and durability. From industrial flooring to decorative concrete finishes, we have the right solution for your needs.</p>
+                </div>
+                <div class="about-images">
+                    <img class="about-image-thumb" src="Reso/WhatsApp Image 2025-03-09 at 20.40.05_24213f8e.jpg" alt="About Chemtech Image 1">
+                    <img class="about-image-thumb" src="Reso/WhatsApp Image 2025-03-09 at 20.40.05_ace895d5.jpg" alt="About Chemtech Image 2">
+                    <img class="about-image-thumb" src="Reso/WhatsApp Image 2025-03-09 at 20.40.05_cb6171ef.jpg" alt="About Chemtech Image 3">
+                </div>
+                <div class="about-image">
+                    <!-- External factory/industrial image -->
+                    <img src="https://source.unsplash.com/800x600/?factory,industrial" alt="About Chemtech">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-details">
+                        <p><i class="fas fa-user"></i> Mr. Ajay Choure, Proprietor</p>
+                        <p><i class="fas fa-phone"></i> +91 9834094310</p>
+                        <p><i class="fas fa-envelope"></i> chemtechcoating@gmail.com</p>
+                        <p><i class="fas fa-globe"></i> chemtechcoating.in</p>
+                    </div>
+                    <h3>Business Hours</h3>
+                    <p>Monday - Saturday: 9:00 AM - 6:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <h2>CHEMTECH COATING</h2>
+                    </div>
+                    <p>Quality epoxy coating and waterproofing solutions for all your needs.</p>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <a href="tel:+919834094310"><i class="fas fa-phone"></i> +91 9834094310</a>
+                    <a href="mailto:chemtechcoating@gmail.com"><i class="fas fa-envelope"></i> chemtechcoating@gmail.com</a>
+                    <a href="https://chemtechcoating.in"><i class="fas fa-globe"></i> chemtechcoating.in</a>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Chemtech Coating Solution. All Rights Reserved.</p>
+                <p>Design by Premate Software Solution Pvt Ltd</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
