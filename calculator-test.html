@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost Calculator Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .cost-calculator {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        .calculator-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        #calculate-cost {
+            grid-column: 1 / -1;
+            margin-top: 10px;
+            background-color: #165a72;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .calculator-result {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        .result-box {
+            text-align: center;
+            padding: 15px;
+            border: 1px dashed #ddd;
+            border-radius: 5px;
+        }
+        #estimated-cost {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #165a72;
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cost Calculator Test</h1>
+    
+    <div class="cost-calculator">
+        <div class="calculator-form">
+            <div class="form-group">
+                <label for="area">Area (in sq. ft.)</label>
+                <input type="number" id="area" min="1" placeholder="Enter area">
+            </div>
+            <div class="form-group">
+                <label for="coating-type">Coating Type</label>
+                <select id="coating-type">
+                    <option value="standard">Standard Epoxy</option>
+                    <option value="metallic">Metallic Epoxy</option>
+                    <option value="flake">Flake Epoxy</option>
+                    <option value="polyurethane">Polyurethane</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="floor-condition">Floor Condition</label>
+                <select id="floor-condition">
+                    <option value="good">Good</option>
+                    <option value="average">Average</option>
+                    <option value="poor">Poor</option>
+                </select>
+            </div>
+            <button id="calculate-cost">Calculate Cost</button>
+        </div>
+        <div class="calculator-result" id="calculator-result">
+            <h3>Estimated Cost</h3>
+            <div class="result-box">
+                <p>Your estimated cost: <span id="estimated-cost">₹0</span></p>
+                <p class="note">Note: This is an estimate. Contact us for a precise quote.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="debug-output" style="background: #f0f0f0; padding: 15px; border-radius: 5px;">
+        <h3>Debug Information</h3>
+        <pre id="debug-log"></pre>
+    </div>
+    
+    <script>
+        // Debug logger
+        function log(message) {
+            console.log(message);
+            const debugLog = document.getElementById('debug-log');
+            debugLog.textContent += message + '\n';
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            log('Calculator test page loaded');
+            
+            // Find elements
+            const calculateBtn = document.getElementById('calculate-cost');
+            const areaInput = document.getElementById('area');
+            const coatingTypeSelect = document.getElementById('coating-type');
+            const floorConditionSelect = document.getElementById('floor-condition');
+            const estimatedCostElement = document.getElementById('estimated-cost');
+            const calculatorResult = document.getElementById('calculator-result');
+            
+            // Log element existence
+            log('Elements found: ' + 
+                JSON.stringify({
+                    calculateBtn: !!calculateBtn,
+                    areaInput: !!areaInput,
+                    coatingTypeSelect: !!coatingTypeSelect,
+                    floorConditionSelect: !!floorConditionSelect,
+                    estimatedCostElement: !!estimatedCostElement,
+                    calculatorResult: !!calculatorResult
+                }, null, 2)
+            );
+            
+            // Base rates per square foot (in ₹)
+            const baseRates = {
+                'standard': 60,
+                'metallic': 120,
+                'flake': 90,
+                'polyurethane': 80
+            };
+            
+            // Condition multipliers
+            const conditionMultipliers = {
+                'good': 1.0,
+                'average': 1.2,
+                'poor': 1.5
+            };
+            
+            // Minimum costs
+            const minimumCost = 5000;
+            
+            // Calculate cost function
+            function calculateCost() {
+                log('Calculate function called');
+                
+                // Get values
+                const area = parseInt(areaInput.value) || 0;
+                const coatingType = coatingTypeSelect.value;
+                const floorCondition = floorConditionSelect.value;
+                
+                log('Input values: ' + JSON.stringify({ area, coatingType, floorCondition }));
+                
+                // Validate area
+                if (area <= 0) {
+                    alert('Please enter a valid area');
+                    return;
+                }
+                
+                // Calculate base cost
+                const baseRate = baseRates[coatingType] || baseRates['standard'];
+                const conditionMultiplier = conditionMultipliers[floorCondition] || conditionMultipliers['good'];
+                
+                let totalCost = area * baseRate * conditionMultiplier;
+                log('Base calculation: ' + area + ' × ' + baseRate + ' × ' + conditionMultiplier + ' = ' + totalCost);
+                
+                // Apply minimum cost
+                totalCost = Math.max(totalCost, minimumCost);
+                log('After minimum cost check: ' + totalCost);
+                
+                // Apply volume discount
+                if (area > 1000) {
+                    totalCost = totalCost * 0.9; // 10% discount for large areas
+                    log('Applied 10% discount: ' + totalCost);
+                } else if (area > 500) {
+                    totalCost = totalCost * 0.95; // 5% discount for medium areas
+                    log('Applied 5% discount: ' + totalCost);
+                }
+                
+                // Round to nearest 100
+                totalCost = Math.ceil(totalCost / 100) * 100;
+                log('Final cost (rounded): ' + totalCost);
+                
+                // Display result
+                estimatedCostElement.textContent = '₹' + totalCost.toLocaleString('en-IN');
+                
+                // Show result container
+                calculatorResult.style.display = 'block';
+            }
+            
+            // Add event listener to calculate button
+            calculateBtn.addEventListener('click', function(e) {
+                log('Calculate button clicked');
+                calculateCost();
+            });
+            
+            // Also calculate on Enter key in area input
+            areaInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    log('Enter key pressed in area input');
+                    calculateCost();
+                }
+            });
+            
+            log('Calculator test setup complete');
+        });
+    </script>
+</body>
+</html> 

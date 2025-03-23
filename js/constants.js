@@ -1,0 +1,5 @@
+// Constants
+export const SLIDER_INTERVAL = 5000;
+export const TESTIMONIAL_SLIDER_INTERVAL = 4000;
+export const STICKY_HEADER_THRESHOLD = 100;
+export const SCROLL_POSITION_OFFSET = 200;
