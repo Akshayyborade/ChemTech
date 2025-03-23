@@ -463,8 +463,9 @@ header.sticky {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
 }
 
 .service-card {
@@ -2083,5 +2084,223 @@ footer {
     
     .contact-btn {
         display: none; /* Hide contact button in mobile menu */
+    }
+}
+
+/* Industries Section Styling */
+.industries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.industry-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.industry-card:hover {
+    transform: translateY(-10px);
+}
+
+.industry-card i {
+    font-size: 2.5rem;
+    color: #165a72;
+    margin-bottom: 1rem;
+}
+
+.industry-card h4 {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+/* Services Grid Enhancement */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.service-category {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.service-category:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.service-category:hover::before {
+    width: 100%;
+    opacity: 0.1;
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.category-header i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-right: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.service-category:hover .category-header i {
+    transform: scale(1.1);
+}
+
+.category-header h3 {
+    font-size: 1.5rem;
+    color: var(--heading-color);
+    margin: 0;
+}
+
+.service-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-list li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    color: var(--text-color);
+    transition: padding-left 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.service-list li:before {
+    content: '→';
+    margin-right: 10px;
+    color: var(--primary-color);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.service-list li:hover {
+    padding-left: 10px;
+    color: var(--primary-color);
+}
+
+.service-list li:hover:before {
+    opacity: 1;
+}
+
+/* Industries Section Enhancement */
+.industries {
+    padding: 100px 0;
+    background: linear-gradient(to bottom, #f9f9f9, #ffffff);
+}
+
+.industries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.industry-card {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.industry-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.industry-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.industry-card:hover::after {
+    transform: scaleX(1);
+}
+
+.industry-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.industry-card:hover i {
+    transform: scale(1.1);
+}
+
+.industry-card h4 {
+    color: var(--heading-color);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.industry-card p {
+    color: var(--text-color);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .services-grid,
+    .industries-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .service-category,
+    .industry-card {
+        padding: 2rem;
+    }
+
+    .category-header i {
+        font-size: 2rem;
+    }
+
+    .category-header h3 {
+        font-size: 1.3rem;
     }
 }
