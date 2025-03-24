@@ -652,7 +652,314 @@ const offlineStyles = `
     }
 `;
 
-// Initialize all functionality when DOM is loaded
+// Add performance monitoring and analytics
+const initPerformanceMonitoring = () => {
+    // Performance metrics tracking
+    const trackPerformanceMetrics = () => {
+        const metrics = {};
+        
+        // Core Web Vitals
+        if ('web-vital' in window) {
+            webVitals.getCLS(metric => metrics.cls = metric.value);
+            webVitals.getFID(metric => metrics.fid = metric.value);
+            webVitals.getLCP(metric => metrics.lcp = metric.value);
+        }
+
+        // Custom performance marks
+        performance.mark('app-loaded');
+        
+        return metrics;
+    };
+
+    // Resource loading optimization
+    const optimizeResourceLoading = () => {
+        // Preload critical resources
+        const preloadLinks = [
+            { rel: 'preload', href: '/css/styles.css', as: 'style' },
+            { rel: 'preload', href: '/js/main.js', as: 'script' },
+            { rel: 'preconnect', href: 'https://fonts.googleapis.com' }
+        ];
+
+        preloadLinks.forEach(link => {
+            const linkElement = document.createElement('link');
+            Object.entries(link).forEach(([key, value]) => {
+                linkElement[key] = value;
+            });
+            document.head.appendChild(linkElement);
+        });
+    };
+
+    // Dynamic import for non-critical components
+    const loadNonCriticalResources = async () => {
+        // Wait for main content to load
+        await document.readyState === 'complete' || new Promise(resolve => {
+            window.addEventListener('load', resolve);
+        });
+
+        // Load non-critical resources
+        const nonCriticalModules = [
+            import('./analytics.js'),
+            import('./social-sharing.js'),
+            import('./feedback-form.js')
+        ];
+
+        Promise.all(nonCriticalModules).catch(console.error);
+    };
+
+    // Memory management
+    const optimizeMemoryUsage = () => {
+        // Clean up event listeners when components are removed
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
+                mutation.removedNodes.forEach(node => {
+                    if (node.nodeType === 1) { // ELEMENT_NODE
+                        // Clean up event listeners
+                        const listeners = node._listeners || [];
+                        listeners.forEach(({ type, handler }) => {
+                            node.removeEventListener(type, handler);
+                        });
+                    }
+                });
+            });
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+    };
+
+    // Enhanced error tracking
+    const initErrorTracking = () => {
+        window.addEventListener('error', (event) => {
+            console.error('Runtime error:', {
+                message: event.message,
+                filename: event.filename,
+                lineNo: event.lineno,
+                colNo: event.colno,
+                error: event.error
+            });
+            // Send to analytics if needed
+        });
+
+        window.addEventListener('unhandledrejection', (event) => {
+            console.error('Unhandled promise rejection:', event.reason);
+            // Send to analytics if needed
+        });
+    };
+
+    // Initialize all performance optimizations
+    trackPerformanceMetrics();
+    optimizeResourceLoading();
+    loadNonCriticalResources();
+    optimizeMemoryUsage();
+    initErrorTracking();
+};
+
+// Add analytics tracking
+const initAnalytics = () => {
+    const trackEvent = (category, action, label = '', value = '') => {
+        if (window.gtag) {
+            gtag('event', action, {
+                event_category: category,
+                event_label: label,
+                value: value
+            });
+        }
+    };
+
+    // Track calculator usage
+    const trackCalculatorUsage = () => {
+        const form = document.querySelector('.calculator-form');
+        if (form) {
+            form.addEventListener('submit', () => {
+                trackEvent('Calculator', 'Submit', 'Cost Calculation');
+            });
+
+            // Track field interactions
+            form.querySelectorAll('input, select').forEach(input => {
+                input.addEventListener('change', () => {
+                    trackEvent('Calculator', 'Input Change', input.id);
+                });
+            });
+        }
+    };
+
+    // Track service interactions
+    const trackServiceInteractions = () => {
+        document.querySelectorAll('.service-category').forEach(category => {
+            category.addEventListener('click', () => {
+                const serviceName = category.querySelector('h3').textContent;
+                trackEvent('Services', 'View', serviceName);
+            });
+        });
+    };
+
+    // Initialize tracking
+    trackCalculatorUsage();
+    trackServiceInteractions();
+};
+
+// Add A/B Testing and Enhanced Analytics
+const initABTesting = () => {
+    // A/B Test variants
+    const variants = {
+        calculatorLayout: ['standard', 'simplified'],
+        serviceDisplay: ['grid', 'list'],
+        colorScheme: ['default', 'modern']
+    };
+
+    // Assign user to test groups
+    const assignTestGroups = () => {
+        const testGroups = {};
+        Object.keys(variants).forEach(test => {
+            const variantOptions = variants[test];
+            testGroups[test] = variantOptions[Math.floor(Math.random() * variantOptions.length)];
+        });
+        localStorage.setItem('abTestGroups', JSON.stringify(testGroups));
+        return testGroups;
+    };
+
+    // Get or create test groups
+    const testGroups = JSON.parse(localStorage.getItem('abTestGroups')) || assignTestGroups();
+
+    // Apply variants
+    const applyVariants = () => {
+        document.body.classList.add(`calculator-${testGroups.calculatorLayout}`);
+        document.body.classList.add(`services-${testGroups.serviceDisplay}`);
+        document.body.classList.add(`theme-${testGroups.colorScheme}`);
+    };
+
+    // Track variant performance
+    const trackVariantPerformance = () => {
+        if (window.gtag) {
+            Object.entries(testGroups).forEach(([test, variant]) => {
+                gtag('event', 'experiment_impression', {
+                    'experiment_id': test,
+                    'variant_id': variant
+                });
+            });
+        }
+    };
+
+    applyVariants();
+    trackVariantPerformance();
+    return testGroups;
+};
+
+// Enhanced User Interaction Tracking
+const initEnhancedTracking = () => {
+    // Session tracking
+    const sessionId = Date.now().toString(36) + Math.random().toString(36).substr(2);
+    
+    // User engagement metrics
+    let scrollDepth = 0;
+    let timeOnPage = 0;
+    let interactionCount = 0;
+
+    // Track scroll depth
+    const trackScrollDepth = () => {
+        window.addEventListener('scroll', debounce(() => {
+            const winHeight = window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.scrollY;
+            const newScrollDepth = Math.round((scrollTop + winHeight) / docHeight * 100);
+            
+            if (newScrollDepth > scrollDepth) {
+                scrollDepth = newScrollDepth;
+                trackEvent('Engagement', 'Scroll Depth', `${scrollDepth}%`);
+            }
+        }, 500));
+    };
+
+    // Track time on page
+    const trackTimeOnPage = () => {
+        const interval = setInterval(() => {
+            timeOnPage += 10;
+            if (timeOnPage % 60 === 0) { // Track every minute
+                trackEvent('Engagement', 'Time on Page', `${timeOnPage/60} minutes`);
+            }
+        }, 10000);
+
+        // Clear interval when page is hidden
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                clearInterval(interval);
+            }
+        });
+    };
+
+    // Track user interactions
+    const trackInteractions = () => {
+        const interactiveElements = document.querySelectorAll('button, a, input, select');
+        interactiveElements.forEach(element => {
+            element.addEventListener('click', () => {
+                interactionCount++;
+                trackEvent('Engagement', 'Interaction', `Count: ${interactionCount}`);
+            });
+        });
+    };
+
+    // Track form interactions in detail
+    const trackDetailedFormInteractions = () => {
+        const form = document.querySelector('.calculator-form');
+        if (!form) return;
+
+        const formAnalytics = {
+            startTime: null,
+            fieldInteractions: {},
+            completionRate: 0
+        };
+
+        form.addEventListener('focusin', () => {
+            if (!formAnalytics.startTime) {
+                formAnalytics.startTime = Date.now();
+            }
+        });
+
+        form.querySelectorAll('input, select').forEach(field => {
+            field.addEventListener('change', () => {
+                formAnalytics.fieldInteractions[field.id] = {
+                    interactionCount: (formAnalytics.fieldInteractions[field.id]?.interactionCount || 0) + 1,
+                    timeSpent: Date.now() - formAnalytics.startTime
+                };
+
+                // Calculate completion rate
+                const totalFields = form.querySelectorAll('input, select').length;
+                const filledFields = Object.keys(formAnalytics.fieldInteractions).length;
+                formAnalytics.completionRate = Math.round((filledFields / totalFields) * 100);
+
+                trackEvent('Form', 'Field Interaction', field.id, formAnalytics.completionRate);
+            });
+        });
+    };
+
+    // Heat map data collection
+    const initHeatMap = () => {
+        const heatMapData = [];
+        
+        document.addEventListener('click', (e) => {
+            heatMapData.push({
+                x: e.pageX,
+                y: e.pageY,
+                timestamp: Date.now(),
+                element: e.target.tagName,
+                path: e.path?.map(el => el.tagName).join(' > ')
+            });
+
+            // Send data in batches
+            if (heatMapData.length >= 10) {
+                trackEvent('HeatMap', 'Clicks', JSON.stringify(heatMapData));
+                heatMapData.length = 0;
+            }
+        });
+    };
+
+    trackScrollDepth();
+    trackTimeOnPage();
+    trackInteractions();
+    trackDetailedFormInteractions();
+    initHeatMap();
+};
+
+// Initialize new features
 document.addEventListener('DOMContentLoaded', () => {
     animateOnScroll();
     initServiceFilter();
@@ -667,6 +974,11 @@ document.addEventListener('DOMContentLoaded', () => {
     enhanceFormValidation();
     addMobileStyles();
     enhancePerformance();
+    initPerformanceMonitoring();
+    initAnalytics();
+    const testGroups = initABTesting();
+    initEnhancedTracking();
+    initChatBot();
 });
 
 // Add smooth scrolling for navigation
@@ -730,4 +1042,313 @@ style.textContent = `
     }
 `;
 
+// Add performance-related styles
+const performanceStyles = `
+    /* Add content-visibility for better performance */
+    .service-category,
+    .industry-card {
+        content-visibility: auto;
+        contain-intrinsic-size: 0 500px;
+    }
+
+    /* Optimize animations */
+    @media (prefers-reduced-motion: reduce) {
+        .animate-in,
+        .service-category,
+        .industry-card {
+            animation: none !important;
+            transition: none !important;
+        }
+    }
+
+    /* Hardware acceleration for smooth animations */
+    .scroll-progress,
+    .mobile-error-toast,
+    .industry-details {
+        transform: translateZ(0);
+        will-change: transform;
+    }
+`;
+
+// Append performance styles
+style.textContent += performanceStyles;
+
+// Add A/B test variant styles
+const abTestStyles = `
+    /* Calculator Layout Variants */
+    .calculator-simplified .calculator-form {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .calculator-simplified .form-group {
+        margin-bottom: 2rem;
+    }
+
+    /* Service Display Variants */
+    .services-list .services-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .services-list .service-category {
+        width: 100%;
+    }
+
+    /* Color Scheme Variants */
+    .theme-modern {
+        --primary-color: #2196f3;
+        --secondary-color: #ff4081;
+        --text-color: #333;
+        --background-color: #f8f9fa;
+    }
+`;
+
+// Append A/B test styles
+style.textContent += abTestStyles;
+
+document.head.appendChild(style);
+
+// Add this to handle the chat functionality
+const initChatBot = () => {
+    const chatButton = document.getElementById('chatButton');
+    const chatPopup = document.getElementById('chatPopup');
+    const closeChat = document.getElementById('closeChat');
+    const chatInput = document.getElementById('chatInput');
+    const sendMessage = document.getElementById('sendMessage');
+    const chatBody = document.querySelector('.chat-body');
+
+    // Track conversation state
+    let conversationState = {
+        step: 'greeting',
+        userData: {
+            name: '',
+            email: '',
+            interest: '',
+            message: ''
+        }
+    };
+
+    // Initial bot message
+    const startConversation = () => {
+        addBotMessage("Hello! I'm here to help you. What's your name?");
+    };
+
+    // Handle user messages based on conversation state
+    const handleUserInput = (userMessage) => {
+        addUserMessage(userMessage);
+
+        switch (conversationState.step) {
+            case 'greeting':
+                conversationState.userData.name = userMessage;
+                conversationState.step = 'email';
+                addBotMessage(`Nice to meet you, ${userMessage}! Please share your email address so we can stay in touch.`);
+                break;
+
+            case 'email':
+                if (validateEmail(userMessage)) {
+                    conversationState.userData.email = userMessage;
+                    conversationState.step = 'interest';
+                    addBotMessage("What service are you interested in? Choose from:\n1. Industrial Flooring\n2. Commercial Spaces\n3. Residential Solutions\n4. Waterproofing");
+                } else {
+                    addBotMessage("Please enter a valid email address.");
+                }
+                break;
+
+            case 'interest':
+                conversationState.userData.interest = userMessage;
+                conversationState.step = 'message';
+                addBotMessage("Great choice! Please tell me more about your requirements or any questions you have.");
+                break;
+
+            case 'message':
+                conversationState.userData.message = userMessage;
+                conversationState.step = 'complete';
+                submitChatForm(conversationState.userData);
+                break;
+        }
+    };
+
+    // Validate email format
+    const validateEmail = (email) => {
+        return email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+    };
+
+    // Add message to chat
+    const addUserMessage = (message) => {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'chat-message user';
+        messageDiv.innerHTML = `
+            <p>${message}</p>
+            <span class="message-time">${new Date().toLocaleTimeString()}</span>
+        `;
+        chatBody.appendChild(messageDiv);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    };
+
+    const addBotMessage = (message) => {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'chat-message bot';
+        messageDiv.innerHTML = `
+            <p>${message}</p>
+            <span class="message-time">${new Date().toLocaleTimeString()}</span>
+        `;
+        chatBody.appendChild(messageDiv);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    };
+
+    // Submit the collected information
+    const submitChatForm = async (userData) => {
+        try {
+            // Send email to user
+            const userTemplateParams = {
+                email: userData.email,
+                name: userData.name
+            };
+
+            await emailjs.send('service_tlj13aq', 'template_2y4rsbp', userTemplateParams);
+
+            // Send email to admin
+            const adminTemplateParams = {
+                admin_email: "chemtechcoating@gmail.com",
+                user_name: userData.name,
+                user_email: userData.email,
+                user_message: userData.message,
+                user_service: userData.interest
+            };
+
+            await emailjs.send('service_tlj13aq', 'template_3u6s00q', adminTemplateParams);
+
+            // Show success message
+            addBotMessage("Thank you for your message! We'll get back to you soon. Is there anything else I can help you with?");
+            
+            // Reset conversation state
+            conversationState = {
+                step: 'greeting',
+                userData: {
+                    name: '',
+                    email: '',
+                    interest: '',
+                    message: ''
+                }
+            };
+        } catch (error) {
+            console.error('Error sending message:', error);
+            addBotMessage("There was an error sending your message. Please try again later.");
+        }
+    };
+
+    // Event listeners
+    chatButton.addEventListener('click', () => {
+        chatPopup.classList.toggle('show');
+        if (chatBody.children.length === 0) {
+            startConversation();
+        }
+    });
+
+    closeChat.addEventListener('click', () => {
+        chatPopup.classList.remove('show');
+    });
+
+    const sendChatMessage = () => {
+        const message = chatInput.value.trim();
+        if (message) {
+            handleUserInput(message);
+            chatInput.value = '';
+        }
+    };
+
+    sendMessage.addEventListener('click', sendChatMessage);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendChatMessage();
+        }
+    });
+};
+
+// Add these styles to your existing CSS
+const chatStyles = `
+    .chat-message {
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        max-width: 80%;
+    }
+
+    .chat-message.user {
+        background-color: #e3f2fd;
+        margin-left: auto;
+    }
+
+    .chat-message.bot {
+        background-color: #f5f5f5;
+        margin-right: auto;
+    }
+
+    .chat-message p {
+        margin: 0;
+        padding: 0;
+    }
+
+    .message-time {
+        font-size: 0.8em;
+        color: #666;
+        display: block;
+        margin-top: 5px;
+    }
+
+    .chat-popup {
+        width: 300px;
+        height: 400px;
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        display: none;
+        flex-direction: column;
+        z-index: 1000;
+    }
+
+    .chat-popup.show {
+        display: flex;
+    }
+
+    .chat-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 10px;
+    }
+
+    .chat-footer {
+        padding: 10px;
+        border-top: 1px solid #eee;
+        display: flex;
+        gap: 10px;
+    }
+
+    .chat-footer input {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        outline: none;
+    }
+
+    .chat-footer button {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+    }
+`;
+
+// Add the styles to the document
+const style = document.createElement('style');
+style.textContent += chatStyles;
 document.head.appendChild(style); 

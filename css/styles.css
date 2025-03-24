@@ -2304,3 +2304,47 @@ footer {
         font-size: 1.3rem;
     }
 }
+
+.chat-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.chat-contact-form input,
+.chat-contact-form select,
+.chat-contact-form textarea {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.chat-contact-form textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+.chat-submit-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.chat-submit-btn:hover {
+    background: var(--primary-color-dark);
+}
+
+.chat-message.bot .chat-contact-form {
+    margin-left: -10px;
+    margin-right: -10px;
+    border-radius: 0;
+}
