@@ -1,23 +1,80 @@
-// Color Selector Tool
+// Color Selector functionality
 export function initColorSelector() {
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const colorCollections = document.querySelectorAll('.color-collection');
     const colorItems = document.querySelectorAll('.color-item');
-    const floorPreview = document.getElementById('floorColorPreview');
-    
-    if (!colorItems.length || !floorPreview) return;
-    
-    colorItems.forEach(item => {
-        item.addEventListener('click', function() {
-            // Remove active class from all items
-            colorItems.forEach(i => i.classList.remove('active'));
-            
-            // Add active class to clicked item
-            this.classList.add('active');
-            
-            // Update preview
-            const color = this.style.backgroundColor;
-            floorPreview.style.backgroundColor = color;
+    const previewBtns = document.querySelectorAll('.preview-btn');
+    const previewImage = document.getElementById('previewImage');
+    const colorPreview = document.getElementById('colorPreview');
+
+    // Room template images
+    const roomTemplates = {
+        room: 'Reso/room-templates/default-room.jpg',
+        closeup: 'Reso/room-templates/closeup-floor.jpg'
+    };
+
+    // Switch between color categories (Solid, Metallic, etc.)
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            categoryBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+
+            // Show corresponding collection
+            const targetCollection = btn.getAttribute('data-category') + '-colors';
+            colorCollections.forEach(collection => {
+                collection.classList.remove('active');
+                if (collection.id === targetCollection) {
+                    collection.classList.add('active');
+                }
+            });
         });
     });
+
+    // Handle color selection
+    colorItems.forEach(item => {
+        item.addEventListener('click', () => {
+            // Remove active class from all items
+            colorItems.forEach(i => i.classList.remove('active'));
+            // Add active class to clicked item
+            item.classList.add('active');
+
+            // Update preview
+            if (item.dataset.color) {
+                // For solid colors
+                colorPreview.style.backgroundColor = item.dataset.color;
+                colorPreview.style.backgroundImage = 'none';
+            } else {
+                // For textured finishes (metallic, flakes, quartz)
+                const previewDiv = item.querySelector('.color-preview');
+                const computedStyle = window.getComputedStyle(previewDiv);
+                colorPreview.style.backgroundImage = computedStyle.backgroundImage;
+                colorPreview.style.backgroundColor = 'transparent';
+            }
+        });
+    });
+
+    // Handle preview view switching
+    previewBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            previewBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+
+            // Update preview image
+            const view = btn.getAttribute('data-view');
+            if (roomTemplates[view]) {
+                previewImage.src = roomTemplates[view];
+            }
+        });
+    });
+
+    // Initialize with first color selected
+    if (colorItems.length > 0) {
+        colorItems[0].click();
+    }
 }
 
 // Cost Calculator - DISABLED FOR TESTING

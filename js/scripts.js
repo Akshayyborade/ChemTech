@@ -17,47 +17,50 @@ emailjs.init("LTWmHe-fQx5R8YbZj");
 
 // Document ready function
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize components
-    initMobileNavigation();
-    initScrollHandlers();
-    initTestimonialSlider();
-    initProductSlider();
-    initContactForm();
-    initProductGallery();
-    
-    // Initialize new features
-    initColorSelector();
-    initCostCalculator();
-    initBeforeAfterSlider();
-    initFaqAccordion();
-    initPortfolioFilter();
-    initBackToTop();
-    initAnimationOnScroll();
-    
-    // New initializations
-    initStickyHeader();
-    initScrollAnimation();
-    
-    // Add cookie consent
-    initCookieConsent();
-    
-    // Enhanced animations
-    enhanceScrollAnimations();
-    
-    // Parallax effect
-    initParallaxEffect();
-    
-    // Chat functionality
-    initChat();
-    
-    // Preloader
+    // Initialize preloader first
     initPreloader();
     
-    // Handle image errors
-    handleImageErrors();
-    
-    // Mobile Menu Functionality
-    initMobileMenu();
+    // Delay other initializations slightly to ensure smooth loading
+    setTimeout(() => {
+        // Initialize components
+        initMobileNavigation();
+        initScrollHandlers();
+        initTestimonialSlider();
+        initProductSlider();
+        initContactForm();
+        initProductGallery();
+        
+        // Initialize new features
+        initColorSelector();
+        initCostCalculator();
+        initBeforeAfterSlider();
+        initFaqAccordion();
+        initPortfolioFilter();
+        initBackToTop();
+        initAnimationOnScroll();
+        
+        // New initializations
+        initStickyHeader();
+        initScrollAnimation();
+        
+        // Add cookie consent
+        initCookieConsent();
+        
+        // Enhanced animations
+        enhanceScrollAnimations();
+        
+        // Parallax effect
+        initParallaxEffect();
+        
+        // Chat functionality
+        initChat();
+        
+        // Handle image errors
+        handleImageErrors();
+        
+        // Mobile Menu Functionality
+        initMobileMenu();
+    }, 100);
 });
 
 // Mobile Navigation Toggle
@@ -311,12 +314,33 @@ function initPreloader() {
     
     if (!preloader) return;
     
+    // Prevent scrolling while preloader is active
+    document.body.style.overflow = 'hidden';
+    
     // Hide preloader after page is fully loaded
     window.addEventListener('load', () => {
+        // Small delay to ensure smooth transition
         setTimeout(() => {
             preloader.classList.add('fade-out');
+            document.body.style.overflow = '';
+            
+            // Remove preloader from DOM after animation
+            setTimeout(() => {
+                preloader.remove();
+            }, 500); // Match this with the CSS transition duration
         }, 500);
     });
+    
+    // Fallback: Hide preloader if it takes too long
+    setTimeout(() => {
+        if (preloader && !preloader.classList.contains('fade-out')) {
+            preloader.classList.add('fade-out');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                preloader.remove();
+            }, 500);
+        }
+    }, 5000); // 5 second fallback
 }
 
 // Add this function to your scripts.js file
