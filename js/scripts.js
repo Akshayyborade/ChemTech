@@ -9,7 +9,8 @@ import {
     initFaqAccordion,
     initPortfolioFilter,
     initBackToTop,
-    initAnimationOnScroll
+    initAnimationOnScroll,
+    initProductCarousel
 } from './features.js';
 
 // Initialize EmailJS
@@ -38,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initPortfolioFilter();
         initBackToTop();
         initAnimationOnScroll();
+        initProductCarousel();
         
         // New initializations
         initStickyHeader();
@@ -60,6 +62,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Mobile Menu Functionality
         initMobileMenu();
+        
+        // Product Categories
+        initProductCategories();
     }, 100);
 });
 
@@ -189,19 +194,32 @@ function initScrollAnimation() {
 function initCookieConsent() {
     const cookieConsent = document.getElementById('cookieConsent');
     const acceptCookies = document.getElementById('acceptCookies');
+    const declineCookies = document.getElementById('declineCookies');
     
     if (!cookieConsent) return;
     
-    // Check if user has already accepted cookies
-    if (!localStorage.getItem('cookiesAccepted')) {
+    // Check if user has already made a choice
+    if (!localStorage.getItem('cookieChoice')) {
+        // Show the cookie consent banner after a short delay
         setTimeout(() => {
             cookieConsent.classList.add('show');
         }, 2000);
     }
     
-    acceptCookies.addEventListener('click', () => {
-        localStorage.setItem('cookiesAccepted', 'true');
+    // Handle accept button click
+    acceptCookies.addEventListener('click', function() {
+        localStorage.setItem('cookieChoice', 'accepted');
         cookieConsent.classList.remove('show');
+        // Here you could also trigger any cookie-dependent functionality
+        console.log('Cookies accepted by user');
+    });
+    
+    // Handle decline button click
+    declineCookies.addEventListener('click', function() {
+        localStorage.setItem('cookieChoice', 'declined');
+        cookieConsent.classList.remove('show');
+        // Here you could implement any necessary cookie restrictions
+        console.log('Cookies declined by user');
     });
 }
 
@@ -410,3 +428,32 @@ document.addEventListener('click', (e) => {
         menuBtn.classList.remove('active');
     }
 });
+
+// Add this new function to handle product categories
+function initProductCategories() {
+    const categories = document.querySelectorAll('.product-category');
+    
+    if (!categories.length) return;
+    
+    // Set first category as active by default
+    categories[0].classList.add('active');
+    
+    categories.forEach(category => {
+        const header = category.querySelector('.category-header');
+        
+        header.addEventListener('click', () => {
+            // Toggle current category
+            category.classList.toggle('active');
+            
+            // Optional: Close other categories when opening a new one
+            // Uncomment below if you want only one category open at a time
+            /*
+            categories.forEach(otherCategory => {
+                if (otherCategory !== category) {
+                    otherCategory.classList.remove('active');
+                }
+            });
+            */
+        });
+    });
+}

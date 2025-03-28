@@ -18,7 +18,7 @@ const urlsToCache = [
   '/Reso/wave-light.svg',
   '/Reso/logo.png',
   'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'
+  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
 ];
 
 // Install event - cache assets
