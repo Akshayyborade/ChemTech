@@ -65,6 +65,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Product Categories
         initProductCategories();
+        
+        // Services Section Interactions
+        initializeServices();
     }, 100);
 });
 
@@ -457,3 +460,30 @@ function initProductCategories() {
         });
     });
 }
+
+// Services Section Interactions
+function initializeServices() {
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        const mainCategories = document.querySelectorAll('.service-category');
+        
+        if (!mainCategories.length) {
+            console.warn('No service categories found');
+            return;
+        }
+
+        // Ensure all categories are visible by default
+        mainCategories.forEach(category => {
+            const content = category.querySelector('.category-content');
+            if (content) {
+                content.style.maxHeight = 'none';
+                content.style.display = 'block';
+            }
+        });
+    });
+}
+
+// Initialize services when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    initializeServices();
+});
