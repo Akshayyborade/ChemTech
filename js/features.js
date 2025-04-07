@@ -216,57 +216,77 @@ export function initCostCalculator() {
     console.log('Cost calculator initialized successfully in features.js');
 }
 
-// Before/After Slider
+// Before After Slider
 export function initBeforeAfterSlider() {
     const slider = document.querySelector('.before-after-slider');
-    const handle = document.querySelector('.slider-handle');
     const beforeImage = document.querySelector('.before-image');
+    const afterImage = document.querySelector('.after-image');
+    const sliderButton = document.querySelector('.slider-button');
+    const sliderLine = document.querySelector('.slider-line');
+    const beforeLabel = document.querySelector('.before-label');
+    const afterLabel = document.querySelector('.after-label');
     
-    if (!slider || !handle || !beforeImage) return;
-    
-    let isDragging = false;
-    
-    // Set initial position
-    handle.style.left = '50%';
-    beforeImage.style.width = '50%';
-    
-    // Handle mouse/touch events
-    handle.addEventListener('mousedown', startDrag);
-    handle.addEventListener('touchstart', startDrag);
-    
-    document.addEventListener('mousemove', drag);
-    document.addEventListener('touchmove', drag);
-    
-    document.addEventListener('mouseup', endDrag);
-    document.addEventListener('touchend', endDrag);
-    
-    function startDrag() {
-        isDragging = true;
+    if (!slider || !beforeImage || !afterImage || !sliderButton || !sliderLine) {
+        console.warn('Before-after slider elements not found');
+        return;
     }
-    
-    function drag(e) {
-        if (!isDragging) return;
-        
-        e.preventDefault();
-        
+
+    let isSliding = false;
+
+    function updateSliderPosition(clientY) {
         const sliderRect = slider.getBoundingClientRect();
-        let x = (e.clientX || e.touches[0].clientX) - sliderRect.left;
+        const percentage = ((clientY - sliderRect.top) / sliderRect.height) * 100;
+        const clampedPercentage = Math.min(Math.max(percentage, 0), 100);
         
-        // Constrain to slider width
-        if (x < 0) x = 0;
-        if (x > sliderRect.width) x = sliderRect.width;
-        
-        // Convert to percentage
-        const percent = (x / sliderRect.width) * 100;
-        
-        // Update position
-        handle.style.left = `${percent}%`;
-        beforeImage.style.width = `${percent}%`;
+        afterImage.style.clipPath = `polygon(0 ${clampedPercentage}%, 100% ${clampedPercentage}%, 100% 100%, 0 100%)`;
+        sliderLine.style.top = `${clampedPercentage}%`;
+        sliderButton.style.top = `${clampedPercentage}%`;
+
+        // Update label visibility
+        if (afterLabel) {
+            // When sliding down (percentage increases), fade out "Before" label
+            afterLabel.style.opacity = clampedPercentage < 40 ? '1' : 
+                                      clampedPercentage < 60 ? (60 - clampedPercentage) / 20 : '0';
+        }
+        if (beforeLabel) {
+            // When sliding up (percentage decreases), fade out "After" label
+            beforeLabel.style.opacity = clampedPercentage > 60 ? '1' : 
+                                     clampedPercentage > 40 ? (clampedPercentage - 40) / 20 : '0';
+        }
     }
-    
-    function endDrag() {
-        isDragging = false;
+
+    function startSliding(e) {
+        isSliding = true;
+        slider.style.cursor = 'ns-resize';
+        updateSliderPosition(e.type === 'touchstart' ? e.touches[0].clientY : e.clientY);
     }
+
+    function stopSliding() {
+        isSliding = false;
+        slider.style.cursor = 'ns-resize';
+    }
+
+    function slide(e) {
+        if (!isSliding) return;
+        e.preventDefault();
+        updateSliderPosition(e.type === 'touchmove' ? e.touches[0].clientY : e.clientY);
+    }
+
+    // Mouse events
+    slider.addEventListener('mousedown', startSliding);
+    document.addEventListener('mousemove', slide);
+    document.addEventListener('mouseup', stopSliding);
+
+    // Touch events
+    slider.addEventListener('touchstart', startSliding);
+    document.addEventListener('touchmove', slide, { passive: false });
+    document.addEventListener('touchend', stopSliding);
+
+    // Set initial position to middle
+    setTimeout(() => {
+        const sliderRect = slider.getBoundingClientRect();
+        updateSliderPosition(sliderRect.top + sliderRect.height * 0.5);
+    }, 100);
 }
 
 // FAQ Accordion
