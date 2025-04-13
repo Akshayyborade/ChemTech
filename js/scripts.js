@@ -51,8 +51,7 @@ function initializeApp() {
     // Utility functions
     handleImageErrors();
     
-    // Mobile and product functionality
-    initMobileMenu();
+    // Product functionality
     initProductCategories();
     
     // Services Section Interactions
@@ -72,25 +71,51 @@ function initMobileNavigation() {
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
         
-    if (menuBtn) {
-        menuBtn.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            this.classList.toggle('active');
-        });
+    if (!menuBtn || !navLinks) {
+        console.warn('Mobile navigation elements not found');
+        return;
     }
+    
+    // Toggle menu when menu button is clicked
+    menuBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevent document click from firing
+        navLinks.classList.toggle('active');
+        this.classList.toggle('active');
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        console.log('Menu button clicked, navLinks active:', navLinks.classList.contains('active')); // Debug
+    });
 
     // Close mobile menu when clicking on a nav link
     const mobileNavLinks = document.querySelectorAll('.nav-links a');
     mobileNavLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function(e) {
             navLinks.classList.remove('active');
             menuBtn.classList.remove('active');
+            document.body.style.overflow = '';
             
             // Use smooth scroll for navigation links
             if (this.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
                 smoothScroll(this.getAttribute('href'));
             }
         });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navLinks.classList.contains('active') && 
+            !menuBtn.contains(e.target) && 
+            !navLinks.contains(e.target)) {
+            navLinks.classList.remove('active');
+            menuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+            console.log('Clicked outside, closing menu'); // Debug
+        }
+    });
+
+    // Prevent clicks inside the menu from closing it
+    navLinks.addEventListener('click', (e) => {
+        e.stopPropagation();
     });
 }
 
@@ -559,43 +584,8 @@ function handleImageErrors() {
             // Replace with a placeholder image
             this.src = 'Reso/placeholder.png';
             this.alt = 'Image not available';
+            console.warn(`Image failed to load: ${this.getAttribute('src') || 'unknown source'}. Replaced with placeholder.`);
         };
-    });
-}
-
-// Mobile Menu Functionality
-function initMobileMenu() {
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-    const navLinksItems = document.querySelectorAll('.nav-link');
-    
-    if (!menuBtn || !navLinks) return;
-    
-    // Toggle menu
-    menuBtn.addEventListener('click', () => {
-        menuBtn.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-    });
-    
-    // Close menu when clicking a link
-    navLinksItems.forEach(link => {
-        link.addEventListener('click', () => {
-            menuBtn.classList.remove('active');
-            navLinks.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-    });
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!menuBtn.contains(e.target) && 
-            !navLinks.contains(e.target) && 
-            navLinks.classList.contains('active')) {
-            menuBtn.classList.remove('active');
-            navLinks.classList.remove('active');
-            document.body.style.overflow = '';
-        }
     });
 }
 
@@ -651,7 +641,6 @@ export {
     initParallaxEffect,
     initChat,
     handleImageErrors,
-    initMobileMenu,
     initProductCategories,
     initializeServices
 };
