@@ -1,0 +1,120 @@
+ /* Cookie Consent Styles */
+ .cookie-consent {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    z-index: 9998;
+    transition: bottom 0.5s ease-in-out;
+    border-top: 3px solid var(--primary-color);
+}
+
+.cookie-consent.show {
+    bottom: 0;
+}
+
+.cookie-consent-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.cookie-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.cookie-header i {
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+.cookie-header h3 {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 20px;
+}
+
+.cookie-consent-text {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.cookie-consent-text a {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.cookie-consent-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.cookie-consent-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.cookie-consent-btn i {
+    font-size: 14px;
+}
+
+.cookie-consent-btn.accept {
+    background: var(--primary-color);
+    color: white;
+}
+
+.cookie-consent-btn.accept:hover {
+    background: #1e7b98;
+    transform: translateY(-2px);
+}
+
+.cookie-consent-btn.customize {
+    background: #f8f9fa;
+    color: #555;
+    border: 1px solid #ddd;
+}
+
+.cookie-consent-btn.customize:hover {
+    background: #e9ecef;
+    transform: translateY(-2px);
+}
+
+.cookie-consent-btn.decline {
+    background: #dc3545;
+    color: white;
+}
+
+.cookie-consent-btn.decline:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .cookie-consent-content {
+        padding: 15px;
+    }
+
+    .cookie-consent-buttons {
+        flex-direction: column;
+    }
+
+    .cookie-consent-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

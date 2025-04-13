@@ -93,127 +93,13 @@ export function initColorSelector() {
     }
 }
 
-// Cost Calculator - DISABLED FOR TESTING
+// Import required modules
+import { initCalculator } from './calculator.js';
+
+// Export functions for the cost calculator
 export function initCostCalculator() {
-    console.log('Module-based calculator is DISABLED for testing');
-    return; // Early return to disable this function
-    
-    // Find all required elements
-    const calculateBtn = document.getElementById('calculate-cost');
-    const areaInput = document.getElementById('area');
-    const coatingTypeSelect = document.getElementById('coating-type');
-    const floorConditionSelect = document.getElementById('floor-condition');
-    const estimatedCostElement = document.getElementById('estimated-cost');
-    const calculatorResult = document.getElementById('calculator-result');
-    
-    // Debug element existence
-    console.log('Elements found in features.js:', {
-        calculateBtn: !!calculateBtn,
-        areaInput: !!areaInput,
-        coatingTypeSelect: !!coatingTypeSelect,
-        floorConditionSelect: !!floorConditionSelect,
-        estimatedCostElement: !!estimatedCostElement,
-        calculatorResult: !!calculatorResult
-    });
-    
-    // Check if all elements exist
-    if (!calculateBtn || !areaInput || !coatingTypeSelect || !floorConditionSelect || !estimatedCostElement) {
-        console.error('Cost calculator elements not found in features.js. Check your HTML IDs.');
-        return;
-    }
-    
-    // Base rates per square foot (in ₹)
-    const baseRates = {
-        'standard': 60,
-        'metallic': 120,
-        'flake': 90,
-        'polyurethane': 80
-    };
-    
-    // Condition multipliers
-    const conditionMultipliers = {
-        'good': 1.0,
-        'average': 1.2,
-        'poor': 1.5
-    };
-    
-    // Minimum costs
-    const minimumCost = 5000;
-    
-    // Add input validation
-    areaInput.addEventListener('input', function() {
-        // Remove non-numeric characters
-        this.value = this.value.replace(/[^0-9]/g, '');
-        
-        // Ensure value is not less than 1
-        if (this.value && parseInt(this.value) < 1) {
-            this.value = '1';
-        }
-    });
-    
-    // Calculate cost function
-    function calculateCost() {
-        console.log('Calculating cost from features.js...');
-        
-        // Get values
-        const area = parseInt(areaInput.value) || 0;
-        const coatingType = coatingTypeSelect.value;
-        const floorCondition = floorConditionSelect.value;
-        
-        console.log('Input values in features.js:', { area, coatingType, floorCondition });
-        
-        // Validate area
-        if (area <= 0) {
-            alert('Please enter a valid area');
-            return;
-        }
-        
-        // Calculate base cost
-        const baseRate = baseRates[coatingType] || baseRates['standard'];
-        const conditionMultiplier = conditionMultipliers[floorCondition] || conditionMultipliers['good'];
-        
-        let totalCost = area * baseRate * conditionMultiplier;
-        
-        // Apply minimum cost
-        totalCost = Math.max(totalCost, minimumCost);
-        
-        // Apply volume discount
-        if (area > 1000) {
-            totalCost = totalCost * 0.9; // 10% discount for large areas
-        } else if (area > 500) {
-            totalCost = totalCost * 0.95; // 5% discount for medium areas
-        }
-        
-        // Round to nearest 100
-        totalCost = Math.ceil(totalCost / 100) * 100;
-        
-        console.log('Calculated cost in features.js:', totalCost);
-        
-        // Display result directly without animation for testing
-        estimatedCostElement.textContent = '₹' + totalCost.toLocaleString('en-IN');
-        
-        // Show result container
-        if (calculatorResult) {
-            calculatorResult.style.display = 'block';
-        }
-    }
-    
-    // Add event listener to calculate button
-    calculateBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        console.log('Calculate button clicked in features.js');
-        calculateCost();
-    });
-    
-    // Also calculate on Enter key in area input
-    areaInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            calculateCost();
-        }
-    });
-    
-    console.log('Cost calculator initialized successfully in features.js');
+    // Call the calculator module's initialization function
+    initCalculator();
 }
 
 // Before After Slider

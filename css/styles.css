@@ -10,6 +10,7 @@
     --border-color: #e0e0e0;
     --success-color: #28a745;
     --gray-color: #6c757d;
+    --light-primary: #e9f4f7;
 }
 
 * {
@@ -2370,5 +2371,99 @@ footer {
     .after-label {
         padding: 6px 12px;
         font-size: 12px;
+    }
+}
+
+/* Add missing carousel dots styling */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0;
+    gap: 0.5rem;
+}
+
+.carousel-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.carousel-dots .dot:hover {
+    background-color: #999;
+}
+
+.carousel-dots .dot.active {
+    background-color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+/* Ensures proper spacing between the carousel and the product features */
+.product-features-section {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+/* Fix styling for feature cards in product section */
+.product-features-section .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.product-features-section .feature-card {
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-features-section .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.product-features-section .feature-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-primary);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.product-features-section h4 {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .carousel-dots {
+        margin: 1rem 0;
+    }
+    
+    .carousel-dots .dot {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .product-features-section .feature-card {
+        padding: 1.2rem;
+    }
+    
+    .product-features-section .feature-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
     }
 }

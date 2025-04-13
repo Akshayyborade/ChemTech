@@ -8,12 +8,15 @@
 
     <!-- SEO Meta Tags -->
     <title>Best Epoxy Flooring & Coating Services in India | Chemtech Coating Solutions</title>
-    <meta name="description" content="Leading epoxy flooring contractors in India. Industrial, commercial & residential epoxy coating solutions with 10+ years expertise. Best quality, competitive prices. Get free consultation!" />
-    <meta name="keywords" content="epoxy flooring, epoxy coating, industrial flooring, commercial flooring, epoxy floor coating, epoxy paint, floor coating, industrial epoxy, residential epoxy, waterproof coating, anti-static flooring, chemical resistant coating, Maharashtra, India" />
+    <meta name="description"
+        content="Leading epoxy flooring contractors in India. Industrial, commercial & residential epoxy coating solutions with 10+ years expertise. Best quality, competitive prices. Get free consultation!" />
+    <meta name="keywords"
+        content="epoxy flooring, epoxy coating, industrial flooring, commercial flooring, epoxy floor coating, epoxy paint, floor coating, industrial epoxy, residential epoxy, waterproof coating, anti-static flooring, chemical resistant coating, Maharashtra, India" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Best Epoxy Flooring & Coating Services in India | Chemtech Coating" />
-    <meta property="og:description" content="Transform your space with premium epoxy flooring solutions. Industrial-grade coatings, expert installation, 10+ years experience. Get free consultation today!" />
+    <meta property="og:description"
+        content="Transform your space with premium epoxy flooring solutions. Industrial-grade coatings, expert installation, 10+ years experience. Get free consultation today!" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://chemtechcoating.in/" />
     <meta property="og:image" content="https://chemtechcoating.in/Reso/epoxy-flooring-work.jpg" />
@@ -22,20 +25,12 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Best Epoxy Flooring & Coating Services in India | Chemtech Coating" />
-    <meta name="twitter:description" content="Transform your space with premium epoxy flooring solutions. Industrial-grade coatings, expert installation, 10+ years experience. Get free consultation today!" />
+    <meta name="twitter:description"
+        content="Transform your space with premium epoxy flooring solutions. Industrial-grade coatings, expert installation, 10+ years experience. Get free consultation today!" />
     <meta name="twitter:image" content="https://chemtechcoating.in/Reso/epoxy-flooring-work.jpg" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://chemtechcoating.in/" />
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
 
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
@@ -64,11 +59,6 @@
     <!-- Add this in the head section -->
     <meta name="theme-color" content="#000080">
     <link rel="manifest" href="manifest.json">
-
-    <!-- Add this in the head section after your main CSS -->
-    <link rel="stylesheet" href="css/features.css">
-    <link rel="stylesheet" href="css/modules/chat.css">
-    <link rel="stylesheet" href="css/modules/products.css">
 
     <!-- Add this in the head section -->
     <script type="application/ld+json">
@@ -144,12 +134,22 @@
     </script>
 
     <!-- Add these to the head section -->
-    <link rel="preload" href="css/styles.css" as="style">
-    <link rel="preload" href="css/features.css" as="style">
-    <link rel="preload" href="css/modules/chat.css" as="style">
-    <link rel="preload" href="css/modules/products.css" as="style">
+    <link rel="stylesheet" href="css/modules/preloader.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modules/features.css">
+    <link rel="stylesheet" href="css/modules/portfolio.css">
+    <link rel="stylesheet" href="css/modules/chat.css">
+    <link rel="stylesheet" href="css/modules/products.css">
+    <link rel="stylesheet" href="css/modules/cookies.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
     <link rel="preload" href="Reso/hero-bg.jpg" as="image">
-    <link rel="preload" href="js/scripts.js" as="script">
 
     <!-- Add these to the head section -->
     <meta name="description"
@@ -187,6 +187,50 @@
     <meta name="robots" content="index, follow" />
     <meta name="language" content="English" />
     <meta name="revisit-after" content="7 days" />
+
+    <!-- Preloader script - add it directly in the head -->
+    <script>
+        // This script runs immediately
+        document.addEventListener('DOMContentLoaded', function() {
+            const preloader = document.getElementById('preloader');
+            if (!preloader) return;
+            
+            // Prevent scrolling while preloader is active
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // This runs after all resources have loaded
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            if (!preloader) return;
+            
+            setTimeout(function() {
+                preloader.classList.add('fade-out');
+                document.body.style.overflow = '';
+                
+                // Remove preloader from DOM after animation
+                setTimeout(function() {
+                    if (preloader.parentNode) {
+                        preloader.parentNode.removeChild(preloader);
+                    }
+                }, 500);
+            }, 500);
+        });
+        
+        // Fallback: Hide preloader if it takes too long (5 seconds)
+        setTimeout(function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader && !preloader.classList.contains('fade-out')) {
+                preloader.classList.add('fade-out');
+                document.body.style.overflow = '';
+                setTimeout(function() {
+                    if (preloader && preloader.parentNode) {
+                        preloader.parentNode.removeChild(preloader);
+                    }
+                }, 500);
+            }
+        }, 5000);
+    </script>
 
     <!-- Add this FAQ schema before closing head tag -->
     <script type="application/ld+json">
@@ -233,75 +277,6 @@
         </div>
     </div>
 
-    <style>
-    /* Preloader Styles */
-    .preloader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #ffffff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        transition: opacity 0.5s ease;
-    }
-
-    .logo-loader {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .rotating-logo {
-        width: 100px;
-        height: 100px;
-        animation: rotateLogo 2s infinite ease-in-out;
-        margin-bottom: 20px;
-    }
-
-    .loading-text {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 2px;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: bold;
-    }
-
-    .loading-text span {
-        display: inline-block;
-        color: #002B5B;
-        font-size: 24px;
-        animation: loadingText 1.5s infinite ease-in-out;
-        opacity: 0.3;
-    }
-
-    .loading-text span:nth-child(2) { animation-delay: 0.2s; }
-    .loading-text span:nth-child(3) { animation-delay: 0.4s; }
-    .loading-text span:nth-child(4) { animation-delay: 0.6s; }
-    .loading-text span:nth-child(5) { animation-delay: 0.8s; }
-    .loading-text span:nth-child(6) { animation-delay: 1.0s; }
-    .loading-text span:nth-child(7) { animation-delay: 1.2s; }
-    .loading-text span:nth-child(8) { animation-delay: 1.4s; }
-
-    @keyframes rotateLogo {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-        100% { transform: scale(1); }
-    }
-
-    @keyframes loadingText {
-        0% { opacity: 0.3; }
-        50% { opacity: 1; }
-        100% { opacity: 0.3; }
-    }
-    </style>
-
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTPHCQK6" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
@@ -311,7 +286,8 @@
         <div class="container header-container">
             <div class="logo">
                 <div class="logo-icon">
-                    <img src="Reso/portfolio/logo.svg" alt="Chemtech Logo" width="80" height="80" style="object-fit: contain;">
+                    <img src="Reso/portfolio/logo.svg" alt="Chemtech Logo" width="80" height="80"
+                        style="object-fit: contain;">
                 </div>
                 <div class="logo-text">
                     <span class="logo-name" style="color: #002B5B; font-weight: bold;">CHEMTECH</span>
@@ -359,7 +335,8 @@
                     </div>
                 </div>
                 <div class="hero-image animate-fadeInRight">
-                    <img loading="lazy" width="600" height="400" src="Reso/Hero Image.jpg" alt="High Performance Epoxy Flooring Example">
+                    <img loading="lazy" width="600" height="400" src="Reso/Hero Image.jpg"
+                        alt="High Performance Epoxy Flooring Example">
                 </div>
             </div>
         </div>
@@ -407,9 +384,10 @@
             <div class="section-header animate-slide-up">
                 <span class="section-subtitle">Our Services</span>
                 <h2 class="section-title">Industrial & Commercial Flooring</h2>
-                <p class="section-description">Professional flooring solutions for industrial and commercial applications</p>
+                <p class="section-description">Professional flooring solutions for industrial and commercial
+                    applications</p>
             </div>
-            
+
             <div class="services-grid">
                 <!-- Protective Solutions -->
                 <div class="service-category">
@@ -420,15 +398,18 @@
                         <ul class="service-list">
                             <li>
                                 <span class="service-name">Heavy Duty Epoxy Flooring System</span>
-                                <span class="service-description">Durable flooring solution for high-traffic industrial areas</span>
+                                <span class="service-description">Durable flooring solution for high-traffic industrial
+                                    areas</span>
                             </li>
                             <li>
                                 <span class="service-name">Self Level Epoxy Flooring System</span>
-                                <span class="service-description">Seamless and level flooring for commercial spaces</span>
+                                <span class="service-description">Seamless and level flooring for commercial
+                                    spaces</span>
                             </li>
                             <li>
                                 <span class="service-name">Chemical Resistance Epoxy Flooring</span>
-                                <span class="service-description">Specialized flooring resistant to chemical exposure</span>
+                                <span class="service-description">Specialized flooring resistant to chemical
+                                    exposure</span>
                             </li>
                         </ul>
                     </div>
@@ -491,7 +472,7 @@
                 <h2 class="section-title">Before & After</h2>
                 <p class="section-description">See the transformation with our premium epoxy coating solutions</p>
             </div>
-            
+
             <div class="before-after-container">
                 <div class="before-after-slider">
                     <img src="Reso/before-epoxy.jpg" alt="Before Epoxy Coating" class="before-image">
@@ -513,14 +494,15 @@
             <div class="section-header animate-slide-up">
                 <span class="section-subtitle">Our Solutions</span>
                 <h2 class="section-title">CHEMTECH Coating Products</h2>
-                <p class="section-description">High-quality epoxy coating systems for industrial, commercial, and specialized applications</p>
+                <p class="section-description">High-quality epoxy coating systems for industrial, commercial, and
+                    specialized applications</p>
             </div>
-            
+
             <div class="product-carousel-wrapper">
                 <div class="carousel-nav carousel-prev">
                     <i class="fas fa-chevron-left"></i>
                 </div>
-                
+
                 <div class="product-carousel-container">
                     <div class="product-carousel">
                         <!-- Category 1: Chemtech Epoxy Floor Coating System -->
@@ -536,17 +518,18 @@
                                 <div class="subcategory-wrapper">
                                     <div class="subcategory-header" onclick="toggleSubcategory(this)">
                                         <h4>Prime Coat</h4>
-                                <div class="toggle-icon">
-                                    <i class="fas fa-chevron-down"></i>
-                                </div>
-                            </div>
+                                        <div class="toggle-icon">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </div>
+                                    </div>
                                     <div class="subcategory-content">
-                                    <ul class="product-list">
-                                        <li>
+                                        <ul class="product-list">
+                                            <li>
                                                 <span class="product-name">Chemtech Prime 60</span>
-                                                <span class="product-description">Professional epoxy primer coating</span>
-                                        </li>
-                                        <li>
+                                                <span class="product-description">Professional epoxy primer
+                                                    coating</span>
+                                            </li>
+                                            <li>
                                                 <span class="product-name">Chemtech Prime 61</span>
                                                 <span class="product-description">Advanced primer solution</span>
                                             </li>
@@ -557,9 +540,9 @@
                                             <li>
                                                 <span class="product-name">Chemtech Prime 63</span>
                                                 <span class="product-description">Premium epoxy primer system</span>
-                                        </li>
-                                    </ul>
-                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
 
                                 <!-- Screed Coat Subcategory -->
@@ -571,8 +554,8 @@
                                         </div>
                                     </div>
                                     <div class="subcategory-content">
-                                    <ul class="product-list">
-                                        <li>
+                                        <ul class="product-list">
+                                            <li>
                                                 <span class="product-name">Chemtech SC 70</span>
                                                 <span class="product-description">Industrial grade screed coating</span>
                                             </li>
@@ -587,31 +570,32 @@
                                             <li>
                                                 <span class="product-name">Chemtech SC 73</span>
                                                 <span class="product-description">Advanced screed solution</span>
-                                        </li>
-                                    </ul>
-                            </div>
-                        </div>
-                        
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <!-- Coving Coat Subcategory -->
                                 <div class="subcategory-wrapper">
                                     <div class="subcategory-header" onclick="toggleSubcategory(this)">
                                         <h4>Coving Coat</h4>
-                                <div class="toggle-icon">
-                                    <i class="fas fa-chevron-down"></i>
-                                </div>
-                            </div>
+                                        <div class="toggle-icon">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </div>
+                                    </div>
                                     <div class="subcategory-content">
-                                    <ul class="product-list">
-                                        <li>
+                                        <ul class="product-list">
+                                            <li>
                                                 <span class="product-name">Chemtech CV 80</span>
-                                                <span class="product-description">Professional coving coating system</span>
-                                        </li>
-                                        <li>
+                                                <span class="product-description">Professional coving coating
+                                                    system</span>
+                                            </li>
+                                            <li>
                                                 <span class="product-name">Chemtech CV 81</span>
                                                 <span class="product-description">Advanced coving solution</span>
-                                        </li>
-                                    </ul>
-                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
 
                                 <!-- Grouting Compound Subcategory -->
@@ -623,47 +607,49 @@
                                         </div>
                                     </div>
                                     <div class="subcategory-content">
-                                    <ul class="product-list">
-                                        <li>
+                                        <ul class="product-list">
+                                            <li>
                                                 <span class="product-name">Chemtech GC 90</span>
-                                                <span class="product-description">High-performance grouting compound</span>
-                                        </li>
-                                    </ul>
-                            </div>
-                        </div>
-                        
+                                                <span class="product-description">High-performance grouting
+                                                    compound</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <!-- Self Level Top Coat Subcategory -->
                                 <div class="subcategory-wrapper">
                                     <div class="subcategory-header" onclick="toggleSubcategory(this)">
                                         <h4>Self Level Top Coat</h4>
-                                <div class="toggle-icon">
-                                    <i class="fas fa-chevron-down"></i>
-                                </div>
-                            </div>
+                                        <div class="toggle-icon">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </div>
+                                    </div>
                                     <div class="subcategory-content">
-                                    <ul class="product-list">
-                                        <li>
+                                        <ul class="product-list">
+                                            <li>
                                                 <span class="product-name">Chemtech TC 100</span>
                                                 <span class="product-description">Standard self-leveling top coat</span>
-                                        </li>
-                                        <li>
+                                            </li>
+                                            <li>
                                                 <span class="product-name">Chemtech TC 200</span>
                                                 <span class="product-description">Advanced self-leveling system</span>
-                                        </li>
+                                            </li>
                                             <li>
                                                 <span class="product-name">Chemtech TC 300</span>
                                                 <span class="product-description">Premium self-leveling coating</span>
                                             </li>
                                             <li>
                                                 <span class="product-name">Chemtech TC 400</span>
-                                                <span class="product-description">Professional grade self-leveling finish</span>
-                                        </li>
-                                    </ul>
+                                                <span class="product-description">Professional grade self-leveling
+                                                    finish</span>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Category 2: Chemtech Epoxy Paint Coating System -->
                         <div class="product-category main-category">
                             <div class="category-header">
@@ -677,18 +663,19 @@
                                 <div class="subcategory-wrapper">
                                     <div class="subcategory-header" onclick="toggleSubcategory(this)">
                                         <h4>2 Pack Epoxy Primer</h4>
-                                <div class="toggle-icon">
-                                    <i class="fas fa-chevron-down"></i>
-                                </div>
-                            </div>
+                                        <div class="toggle-icon">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </div>
+                                    </div>
                                     <div class="subcategory-content">
-                                    <ul class="product-list">
-                                        <li>
+                                        <ul class="product-list">
+                                            <li>
                                                 <span class="product-name">2 Pack Epoxy Primer</span>
-                                                <span class="product-description">High-performance two-component epoxy primer for superior adhesion</span>
-                                        </li>
-                                    </ul>
-                                </div>
+                                                <span class="product-description">High-performance two-component epoxy
+                                                    primer for superior adhesion</span>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
 
                                 <!-- 2 Pack Epoxy Top/Finish Paint Subcategory -->
@@ -700,14 +687,15 @@
                                         </div>
                                     </div>
                                     <div class="subcategory-content">
-                                    <ul class="product-list">
-                                        <li>
+                                        <ul class="product-list">
+                                            <li>
                                                 <span class="product-name">2 Pack Epoxy Top/Finish Paint</span>
-                                                <span class="product-description">Premium two-component epoxy finish coating for lasting protection</span>
-                                        </li>
-                                    </ul>
+                                                <span class="product-description">Premium two-component epoxy finish
+                                                    coating for lasting protection</span>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
 
                                 <!-- Epoxy Thinner Subcategory -->
                                 <div class="subcategory-wrapper">
@@ -721,7 +709,8 @@
                                         <ul class="product-list">
                                             <li>
                                                 <span class="product-name">Epoxy Thinner</span>
-                                                <span class="product-description">Specialized thinner for epoxy paint systems</span>
+                                                <span class="product-description">Specialized thinner for epoxy paint
+                                                    systems</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -760,19 +749,19 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="carousel-nav carousel-next">
                     <i class="fas fa-chevron-right"></i>
                 </div>
             </div>
-            
+
             <div class="carousel-dots">
                 <span class="dot active" data-index="0"></span>
                 <span class="dot" data-index="1"></span>
                 <span class="dot" data-index="2"></span>
                 <span class="dot" data-index="3"></span>
             </div>
-            
+
             <div class="product-features-section">
                 <h3>Key Product Features</h3>
                 <div class="features-grid">
@@ -806,7 +795,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="color-selector">
                 <h3>Explore Our Color Collection</h3>
                 <p>Browse through our extensive range of epoxy flooring colors and finishes</p>
@@ -817,7 +806,7 @@
                     <button class="category-btn" data-category="flake">Decorative Flakes</button>
                     <button class="category-btn" data-category="quartz">Quartz Systems</button>
                 </div>
-                
+
                 <!-- Solid Colors -->
                 <div class="color-collection active" id="solid-colors">
                     <h4>Solid Colors</h4>
@@ -1025,7 +1014,8 @@
             <div class="section-header animate-slide-up">
                 <span class="section-subtitle">Our Work</span>
                 <h2 class="section-title">Recent Projects</h2>
-                <p class="section-description">See how our epoxy solutions have transformed industrial and commercial spaces.</p>
+                <p class="section-description">See how our epoxy solutions have transformed industrial and commercial
+                    spaces.</p>
             </div>
 
             <div class="portfolio-filter">
@@ -1155,7 +1145,8 @@
                         <div class="portfolio-overlay">
                             <div class="portfolio-info">
                                 <h3>Industrial Manufacturing Facility</h3>
-                                <p>Premium white epoxy flooring installation with seamless finish and high durability</p>
+                                <p>Premium white epoxy flooring installation with seamless finish and high durability
+                                </p>
                                 <a href="#" class="portfolio-link">View Details</a>
                             </div>
                         </div>
@@ -1168,7 +1159,8 @@
                         <div class="portfolio-overlay">
                             <div class="portfolio-info">
                                 <h3>Precision Manufacturing Unit</h3>
-                                <p>High-performance green epoxy flooring for specialized manufacturing equipment area</p>
+                                <p>High-performance green epoxy flooring for specialized manufacturing equipment area
+                                </p>
                                 <a href="#" class="portfolio-link">View Details</a>
                             </div>
                         </div>
@@ -1192,138 +1184,7 @@
     </section>
 
     <style>
-    /* Portfolio Section Styles */
-    .portfolio {
-        padding: 80px 0;
-        background: #f9f9f9;
-    }
 
-    .portfolio-filter {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        margin-bottom: 40px;
-    }
-
-    .filter-btn {
-        padding: 8px 20px;
-        border: 2px solid var(--primary-color);
-        background: transparent;
-        color: var(--primary-color);
-        border-radius: 25px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-weight: 500;
-    }
-
-    .filter-btn.active,
-    .filter-btn:hover {
-        background: var(--primary-color);
-        color: white;
-    }
-
-    .portfolio-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        padding: 20px;
-    }
-
-    .portfolio-item {
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease;
-        position: relative;
-    }
-
-    .portfolio-item:hover {
-        transform: translateY(-10px);
-    }
-
-    .portfolio-image {
-        position: relative;
-        overflow: hidden;
-        aspect-ratio: 4/3;
-    }
-
-    .portfolio-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-    }
-
-    .portfolio-item:hover .portfolio-image img {
-        transform: scale(1.1);
-    }
-
-    .portfolio-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(22, 90, 114, 0.9);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .portfolio-item:hover .portfolio-overlay {
-        opacity: 1;
-    }
-
-    .portfolio-info {
-        color: white;
-        text-align: center;
-        padding: 20px;
-        transform: translateY(20px);
-        transition: transform 0.3s ease;
-    }
-
-    .portfolio-item:hover .portfolio-info {
-        transform: translateY(0);
-    }
-
-    .portfolio-info h3 {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-    }
-
-    .portfolio-info p {
-        font-size: 0.9rem;
-        margin-bottom: 15px;
-    }
-
-    .portfolio-link {
-        display: inline-block;
-        padding: 8px 20px;
-        background: white;
-        color: var(--primary-color);
-        text-decoration: none;
-        border-radius: 25px;
-        transition: all 0.3s ease;
-    }
-
-    .portfolio-link:hover {
-        background: var(--primary-color);
-        color: white;
-    }
-
-    @media (max-width: 768px) {
-        .portfolio-filter {
-            flex-wrap: wrap;
-        }
-        
-        .portfolio-grid {
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 10px;
-        }
-    }
     </style>
 
     <!-- About Section -->
@@ -1516,14 +1377,14 @@
                 <h2 class="section-title">Calculate Your Project Cost</h2>
                 <p class="section-description">Get an instant estimate for your epoxy flooring project</p>
             </div>
-            
+
             <div class="cost-calculator">
                 <form class="calculator-form" onsubmit="return false;">
                     <div class="form-group">
                         <label for="area">Area (in sq. ft.)</label>
                         <input type="number" id="area" min="1" placeholder="Enter area" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="application-type">Application Type</label>
                         <select id="application-type" required>
@@ -1570,7 +1431,7 @@
                             <option value="poor">Poor</option>
                         </select>
                     </div>
-                    
+
                     <button type="button" onclick="calculateCost()" class="btn btn-primary">Calculate Cost</button>
                 </form>
                 <div class="calculator-result" id="calculator-result" style="display: none;">
@@ -1600,7 +1461,8 @@
                         </div>
                         <div class="contact-details">
                             <h3>Our Location</h3>
-                            <p>Plot no. 182/2, near MSEB office,<br>karjat - murbad highway, ware villege,<br>Tal - karjat, Dist - raigad<br>410101</p>
+                            <p>Plot no. 182/2, near MSEB office,<br>karjat - murbad highway, ware villege,<br>Tal -
+                                karjat, Dist - raigad<br>410101</p>
                         </div>
                     </div>
                     <div class="contact-card animate-fadeInLeft delay-200">
@@ -1723,6 +1585,95 @@
         <img id="modalImage" class="modal-content">
     </div>
 
+    <!-- Add chatbot HTML -->
+    <div class="floating-chat">
+        <button id="chatButton" class="chat-button">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div id="chatPopup" class="chat-popup">
+            <div class="chat-header">
+                <h3>Chemtech Support</h3>
+                <div class="chat-actions">
+                    <button id="endChat" class="end-chat" title="End Chat">
+                        <i class="fas fa-power-off"></i>
+                    </button>
+                    <button id="closeChat" class="close-chat">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="chat-body">
+                <div class="chat-message bot">
+                    <div class="bot-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! Welcome to Chemtech Coating Solutions. How can I help you today?</p>
+                        <span class="message-time">Just now</span>
+                    </div>
+                </div>
+                <div class="chat-message bot">
+                    <div class="bot-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>You can ask me about our epoxy solutions, request a quote, or inquire about our services.</p>
+                        <div class="chat-buttons">
+                            <button class="chat-option-btn" data-message="Tell me about epoxy flooring">Epoxy Flooring</button>
+                            <button class="chat-option-btn" data-message="I want a quote">Request Quote</button>
+                            <button class="chat-option-btn" data-message="What services do you offer?">Services</button>
+                            <button class="chat-option-btn" data-message="Contact form">Contact Us</button>
+                        </div>
+                        <span class="message-time">Just now</span>
+                    </div>
+                </div>
+                
+                <!-- Chat Contact Form - Hidden by Default -->
+                <div id="chatContactForm" class="chat-contact-form" style="display: none;">
+                    <div class="chat-message bot">
+                        <div class="bot-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>Please fill out this quick form and we'll get back to you soon:</p>
+                            <form id="inChatContactForm" class="in-chat-form">
+                                <div class="form-field">
+                                    <input type="text" name="name" placeholder="Your Name" required>
+                                </div>
+                                <div class="form-field">
+                                    <input type="email" name="email" placeholder="Your Email" required>
+                                </div>
+                                <div class="form-field">
+                                    <input type="tel" name="phone" placeholder="Your Phone">
+                                </div>
+                                <div class="form-field">
+                                    <select name="service">
+                                        <option value="" disabled selected>Service Interested In</option>
+                                        <option value="industrial">Industrial Flooring</option>
+                                        <option value="commercial">Commercial Spaces</option>
+                                        <option value="residential">Residential Solutions</option>
+                                        <option value="waterproofing">Waterproofing</option>
+                                    </select>
+                                </div>
+                                <div class="form-field">
+                                    <textarea name="message" placeholder="Your Message" required></textarea>
+                                </div>
+                                <button type="submit" class="chat-submit-btn">Send Message</button>
+                            </form>
+                            <span class="message-time">Just now</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" id="chatInput" placeholder="Type your message here..." />
+                <button id="sendMessage" type="button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Add this right before the closing body tag -->
     <div id="cookieConsent" class="cookie-consent">
         <div class="cookie-consent-content">
@@ -1730,7 +1681,8 @@
                 <i class="fas fa-cookie-bite"></i>
                 <h3>Cookie Consent</h3>
             </div>
-            <p class="cookie-consent-text">We use cookies to enhance your experience and analyze our website traffic. By clicking "Accept", you consent to our use of cookies. <a href="privacy-policy.html">Learn more</a></p>
+            <p class="cookie-consent-text">We use cookies to enhance your experience and analyze our website traffic. By
+                clicking "Accept", you consent to our use of cookies. <a href="privacy-policy.html">Learn more</a></p>
             <div class="cookie-consent-buttons">
                 <button id="acceptCookies" class="cookie-consent-btn accept">
                     <i class="fas fa-check"></i> Accept All
@@ -1745,1028 +1697,49 @@
         </div>
     </div>
 
-    <style>
-    /* Cookie Consent Styles */
-    .cookie-consent {
-        position: fixed;
-        bottom: -100%;
-        left: 0;
-        right: 0;
-        background: rgba(255, 255, 255, 0.95);
-        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(10px);
-        z-index: 9998;
-        transition: bottom 0.5s ease-in-out;
-        border-top: 3px solid var(--primary-color);
-    }
+    <!-- Add EmailJS CDN -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
 
-    .cookie-consent.show {
-        bottom: 0;
-    }
-
-    .cookie-consent-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-
-    .cookie-header {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 15px;
-    }
-
-    .cookie-header i {
-        font-size: 24px;
-        color: var(--primary-color);
-    }
-
-    .cookie-header h3 {
-        margin: 0;
-        color: var(--primary-color);
-        font-size: 20px;
-    }
-
-    .cookie-consent-text {
-        margin-bottom: 20px;
-        line-height: 1.6;
-        color: #555;
-    }
-
-    .cookie-consent-text a {
-        color: var(--primary-color);
-        text-decoration: underline;
-    }
-
-    .cookie-consent-buttons {
-        display: flex;
-        gap: 15px;
-        flex-wrap: wrap;
-    }
-
-    .cookie-consent-btn {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: all 0.3s ease;
-    }
-
-    .cookie-consent-btn i {
-        font-size: 14px;
-    }
-
-    .cookie-consent-btn.accept {
-        background: var(--primary-color);
-        color: white;
-    }
-
-    .cookie-consent-btn.accept:hover {
-        background: #1e7b98;
-        transform: translateY(-2px);
-    }
-
-    .cookie-consent-btn.customize {
-        background: #f8f9fa;
-        color: #555;
-        border: 1px solid #ddd;
-    }
-
-    .cookie-consent-btn.customize:hover {
-        background: #e9ecef;
-        transform: translateY(-2px);
-    }
-
-    .cookie-consent-btn.decline {
-        background: #dc3545;
-        color: white;
-    }
-
-    .cookie-consent-btn.decline:hover {
-        background: #c82333;
-        transform: translateY(-2px);
-    }
-
-    @media (max-width: 768px) {
-        .cookie-consent-content {
-            padding: 15px;
-        }
-
-        .cookie-consent-buttons {
-            flex-direction: column;
-        }
-
-        .cookie-consent-btn {
-            width: 100%;
-            justify-content: center;
-        }
-    }
-    </style>
-
+    <!-- Core JavaScript functionality -->
     <script>
-    // Cookie Consent Handler
-    document.addEventListener('DOMContentLoaded', function() {
-        const cookieConsent = document.getElementById('cookieConsent');
-        const acceptBtn = document.getElementById('acceptCookies');
-        const customizeBtn = document.getElementById('customizeCookies');
-        const declineBtn = document.getElementById('declineCookies');
-
-        // Show cookie consent if not previously accepted
-        if (!localStorage.getItem('cookieConsent')) {
-            setTimeout(() => {
-                cookieConsent.classList.add('show');
-            }, 2000);
-        }
-
-        // Accept cookies
-        acceptBtn.addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'accepted');
-            cookieConsent.classList.remove('show');
-            // Here you can add code to enable all cookies
-        });
-
-        // Customize cookies
-        customizeBtn.addEventListener('click', () => {
-            // Add your cookie customization logic here
-            // For example, open a modal with cookie settings
-            alert('Cookie preferences customization will be implemented soon.');
-        });
-
-        // Decline cookies
-        declineBtn.addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'declined');
-            cookieConsent.classList.remove('show');
-            // Here you can add code to disable non-essential cookies
-        });
-    });
-
-    // Preloader Handler
-    window.addEventListener('load', function() {
-        const preloader = document.getElementById('preloader');
-        setTimeout(() => {
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500);
-        }, 1500);
-    });
-    </script>
-
-    <!-- Add this before the closing body tag, after emailjs script -->
-    <script>
-        // Initialize EmailJS
-        (function() {
-            emailjs.init("LTWmHe-fQx5R8YbZj"); // Replace with your EmailJS public key
-        })();
-
-        // Chat functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const chatButton = document.getElementById('chatButton');
-            const chatPopup = document.getElementById('chatPopup');
-            const closeChat = document.getElementById('closeChat');
-            const chatInput = document.getElementById('chatInput');
-            const sendMessage = document.getElementById('sendMessage');
-            const chatBody = document.getElementById('chatBody');
-
-            let conversationState = {
-                step: 'greeting',
-                userData: {
-                    name: '',
-                    email: '',
-                    interest: '',
-                    message: ''
-                }
-            };
-
-            // Typing animation for bot messages
-            function addBotMessage(message, withTyping = true) {
-                if (withTyping) {
-                    const typingIndicator = document.createElement('div');
-                    typingIndicator.className = 'chat-message bot typing-indicator';
-                    typingIndicator.innerHTML = `
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    `;
-                    chatBody.appendChild(typingIndicator);
-                    chatBody.scrollTop = chatBody.scrollHeight;
-                    
-                    // Simulate typing delay (shorter for better UX)
-                    setTimeout(() => {
-                        chatBody.removeChild(typingIndicator);
-                        displayBotMessage(message);
-                    }, 1000);
-                } else {
-                    displayBotMessage(message);
-                }
-            }
-
-            function displayBotMessage(message) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'chat-message bot';
-                
-                // Format links in message
-                const formattedMessage = message.replace(
-                    /(https?:\/\/[^\s]+)/g, 
-                    '<a href="$1" target="_blank" class="chat-link">$1</a>'
-                );
-                
-                messageDiv.innerHTML = `
-                    <div class="bot-avatar">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="message-content">
-                        <p>${formattedMessage}</p>
-                        <span class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
-                    </div>
-                `;
-                chatBody.appendChild(messageDiv);
-                chatBody.scrollTop = chatBody.scrollHeight;
-                
-                // Play notification sound
-                playNotificationSound();
-            }
-
-            function addUserMessage(message) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'chat-message user';
-                messageDiv.innerHTML = `
-                    <div class="message-content">
-                        <p>${message}</p>
-                        <span class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
-                    </div>
-                    <div class="user-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                `;
-                chatBody.appendChild(messageDiv);
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }
-
-            // Play a subtle notification sound
-            function playNotificationSound() {
-                const audio = new Audio('https://cdn.jsdelivr.net/gh/fgilio/mini-notification-sound/notification.mp3');
-                audio.volume = 0.2;
-                audio.play().catch(e => console.log('Audio playback error:', e));
-            }
-
-            function validateEmail(email) {
-                return email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
-            }
-
-            async function submitChatForm(userData) {
-                try {
-                    addBotMessage("Sending your message...", false);
-                    
-                    // Send email to user
-                    await emailjs.send('service_tlj13aq', 'template_2y4rsbp', {
-                        email: userData.email,
-                        name: userData.name
+        // Register service worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(function(error) {
+                        console.log('ServiceWorker registration failed: ', error);
                     });
-
-                    // Send email to admin
-                    await emailjs.send('service_tlj13aq', 'template_3u6s00q', {
-                        admin_email: "chemtechcoating@gmail.com",
-                        user_name: userData.name,
-                        user_email: userData.email,
-                        user_message: userData.message,
-                        user_service: userData.interest
-                    });
-
-                    addBotMessage(`
-                        <strong>Thank you, ${userData.name}!</strong> Your message has been sent successfully. 
-                        Our team will contact you shortly about your interest in ${userData.interest}.
-                        <div class="chat-buttons">
-                            <button class="chat-option-btn" data-value="new-question">Ask another question</button>
-                            <button class="chat-option-btn" data-value="end-chat">End chat</button>
-                        </div>
-                    `);
-                    
-                    // Reset conversation but keep name and email
-                    conversationState.step = 'post-submission';
-                    
-                } catch (error) {
-                    console.error('Error:', error);
-                    addBotMessage(`
-                        Sorry, there was an error sending your message. Please try again or contact us directly at 
-                        <a href="mailto:chemtechcoating@gmail.com">chemtechcoating@gmail.com</a>.
-                        <div class="chat-buttons">
-                            <button class="chat-option-btn" data-value="retry">Try again</button>
-                            <button class="chat-option-btn" data-value="end-chat">End chat</button>
-                        </div>
-                    `);
-                }
-            }
-
-            function showServiceOptions() {
-                return `
-                    What service are you interested in?
-                    <div class="chat-buttons">
-                        <button class="chat-option-btn" data-value="Industrial Flooring">Industrial Flooring</button>
-                        <button class="chat-option-btn" data-value="Commercial Spaces">Commercial Spaces</button>
-                        <button class="chat-option-btn" data-value="Residential Solutions">Residential Solutions</button>
-                        <button class="chat-option-btn" data-value="Waterproofing">Waterproofing</button>
-                        <button class="chat-option-btn" data-value="Other">Other</button>
-                    </div>
-                `;
-            }
-
-            function handleUserInput(message) {
-                addUserMessage(message);
-
-                switch (conversationState.step) {
-                    case 'greeting':
-                        conversationState.userData.name = message;
-                        conversationState.step = 'email';
-                        addBotMessage(`
-                            Nice to meet you, <strong>${message}</strong>! 
-                            Please share your email address so we can stay in touch.
-                        `);
-                        break;
-
-                    case 'email':
-                        if (validateEmail(message)) {
-                            conversationState.userData.email = message;
-                            conversationState.step = 'interest';
-                            addBotMessage(showServiceOptions());
-                        } else {
-                            addBotMessage("That doesn't look like a valid email address. Please enter a valid email so we can contact you.");
-                        }
-                        break;
-
-                    case 'interest':
-                        conversationState.userData.interest = message;
-                        conversationState.step = 'message';
-                        addBotMessage(`
-                            Great choice! Please tell me more about your requirements or any questions you have about ${message}.
-                        `);
-                        break;
-
-                    case 'message':
-                        conversationState.userData.message = message;
-                        submitChatForm(conversationState.userData);
-                        break;
-                        
-                    case 'post-submission':
-                        if (message.toLowerCase().includes('question') || message.toLowerCase().includes('another') || message === 'new-question') {
-                            conversationState.step = 'interest';
-                            addBotMessage(showServiceOptions());
-                        } else if (message.toLowerCase().includes('end') || message.toLowerCase().includes('bye') || message === 'end-chat') {
-                            addBotMessage(`
-                                Thank you for chatting with us today, ${conversationState.userData.name}! Feel free to reach out anytime. Have a great day!
-                            `);
-                            setTimeout(() => {
-                                chatPopup.classList.remove('show');
-                            }, 3000);
-                        } else if (message === 'retry') {
-                            conversationState.step = 'message';
-                            addBotMessage("Please tell me again about your requirements or questions.");
-                        } else {
-                            // Handle any other message during post-submission
-                            addBotMessage(`
-                                Is there anything else I can help you with, ${conversationState.userData.name}?
-                                <div class="chat-buttons">
-                                    <button class="chat-option-btn" data-value="new-question">Ask another question</button>
-                                    <button class="chat-option-btn" data-value="end-chat">End chat</button>
-                                </div>
-                            `);
-                        }
-                        break;
-                }
-            }
-
-            // Event Listeners
-            chatButton.addEventListener('click', () => {
-                chatPopup.classList.toggle('show');
-                if (chatBody.children.length === 0) {
-                    addBotMessage(`
-                        <strong>👋 Welcome to Chemtech Coating Solutions!</strong> 
-                        I'm here to help you with your epoxy flooring needs. What's your name?
-                    `);
-                }
             });
-
-            closeChat.addEventListener('click', () => {
-                chatPopup.classList.remove('show');
-            });
-
-            function sendChatMessage() {
-                const message = chatInput.value.trim();
-                if (message) {
-                    handleUserInput(message);
-                    chatInput.value = '';
-                }
-            }
-
-            sendMessage.addEventListener('click', sendChatMessage);
-            chatInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    sendChatMessage();
-                }
-            });
-            
-            // Event delegation for option buttons
-            chatBody.addEventListener('click', (e) => {
-                if (e.target.classList.contains('chat-option-btn')) {
-                    const value = e.target.getAttribute('data-value');
-                    handleUserInput(value);
-                }
-            });
-
-            // Add Cookie consent functionality
-            const cookieConsent = document.getElementById('cookieConsent');
-            const acceptCookies = document.getElementById('acceptCookies');
-            
-            // Check if user has already accepted cookies
-            if (!localStorage.getItem('cookiesAccepted')) {
-                // Show the cookie consent banner
-                setTimeout(() => {
-                    cookieConsent.style.display = 'block';
-                }, 2000); // Show after 2 seconds
-            }
-            
-            // Handle accept button click
-            acceptCookies.addEventListener('click', function() {
-                // Save acceptance in localStorage
-                localStorage.setItem('cookiesAccepted', 'true');
-                
-                // Hide the cookie banner
-                cookieConsent.style.display = 'none';
-            });
-        });
-    </script>
-
-    <!-- Add these styles to your existing CSS or in a style tag -->
-    <style>
-        /* Enhanced Chatbot UI */
-        .floating-chat {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-
-        .chat-button {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--primary-color, #165a72);
-            color: white;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            animation: bounce 2s ease infinite;
-            animation-delay: 5s;
         }
         
-        .chat-button i {
-            font-size: 24px;
-        }
-        
-        .chat-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
-        }
-
-        .chat-button.active {
-            animation: none;
-            transform: scale(0.95);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-
-        .chat-popup {
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            width: 350px;
-            height: 500px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.3s, transform 0.3s;
-        }
-
-        .chat-popup.show {
-            display: flex;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .chat-header {
-            padding: 15px 20px;
-            background: linear-gradient(135deg, var(--primary-color, #165a72), #29b6f6);
-            color: white;
-            border-radius: 12px 12px 0 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .chat-header h3 {
-            margin: 0;
-            font-weight: 600;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .chat-header h3:before {
-            content: '';
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background-color: #4CAF50;
-            border-radius: 50%;
-            margin-right: 8px;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { opacity: 0.5; }
-            50% { opacity: 1; }
-            100% { opacity: 0.5; }
-        }
-
-        .close-chat {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background-color 0.2s;
-        }
-        
-        .close-chat:hover {
-            background-color: rgba(255,255,255,0.2);
-        }
-
-        .chat-body {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            background-color: #f9f9f9;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23e0e0e0' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
-            scroll-behavior: smooth;
-        }
-        
-        .chat-body::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        .chat-body::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        
-        .chat-body::-webkit-scrollbar-thumb {
-            background: #c1c1c1;
-            border-radius: 10px;
-        }
-        
-        .chat-body::-webkit-scrollbar-thumb:hover {
-            background: #a1a1a1;
-        }
-
-        .chat-message {
-            margin: 15px 0;
-            padding: 0;
-            border-radius: 12px;
-            max-width: 85%;
-            display: flex;
-            position: relative;
-            transition: transform 0.2s;
-        }
-        
-        .chat-message:hover {
-            transform: translateY(-2px);
-        }
-
-        .chat-message.bot {
-            margin-right: auto;
-        }
-
-        .chat-message.user {
-            margin-left: auto;
-            flex-direction: row-reverse;
-        }
-        
-        .bot-avatar, .user-avatar {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 5px;
-            flex-shrink: 0;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-        }
-        
-        .bot-avatar {
-            background: linear-gradient(135deg, #29b6f6, #0288d1);
-            color: white;
-            margin-right: 10px;
-        }
-        
-        .user-avatar {
-            background: linear-gradient(135deg, #4CAF50, #388E3C);
-            color: white;
-            margin-left: 10px;
-        }
-        
-        .message-content {
-            padding: 12px 16px;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-            position: relative;
-        }
-        
-        .chat-message.bot .message-content {
-            border-bottom-left-radius: 2px;
-            background-color: #f0f8ff;
-        }
-        
-        .chat-message.user .message-content {
-            border-bottom-right-radius: 2px;
-            background: linear-gradient(135deg, var(--primary-color, #165a72), #1e7b98);
-            color: white;
-        }
-        
-        .message-content p {
-            margin: 0 0 8px 0;
-            line-height: 1.4;
-        }
-        
-        .message-content p:last-child {
-            margin-bottom: 0;
-        }
-        
-        .message-time {
-            font-size: 11px;
-            opacity: 0.7;
-            display: block;
-            margin-top: 5px;
-            text-align: right;
-        }
-        
-        .chat-link {
-            color: inherit;
-            text-decoration: underline;
-            transition: opacity 0.2s;
-        }
-        
-        .chat-link:hover {
-            opacity: 0.8;
-        }
-        
-        .chat-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 10px;
-        }
-        
-        .chat-option-btn {
-            background-color: white;
-            border: 1px solid var(--primary-color, #165a72);
-            color: var(--primary-color, #165a72);
-            border-radius: 15px;
-            padding: 6px 12px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-        }
-        
-        .chat-message.bot .chat-option-btn {
-            background-color: white;
-        }
-        
-        .chat-message.user .chat-option-btn {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: white;
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-        
-        .chat-option-btn:hover {
-            background-color: var(--primary-color, #165a72);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-        }
-        
-        .chat-message.user .chat-option-btn:hover {
-            background-color: white;
-            color: var(--primary-color, #165a72);
-        }
-        
-        /* Typing indicator */
-        .typing-indicator {
-            background-color: #f0f8ff;
-            padding: 12px 16px;
-            border-radius: 12px;
-            margin-left: 48px;
-            display: flex;
-            align-items: center;
-            width: fit-content;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-        }
-        
-        .typing-indicator .dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: #90A4AE;
-            animation: bounce 1.3s linear infinite;
-            margin-right: 5px;
-        }
-        
-        .typing-indicator .dot:nth-child(2) {
-            animation-delay: -1.1s;
-        }
-        
-        .typing-indicator .dot:nth-child(3) {
-            animation-delay: -0.9s;
-            margin-right: 0;
-        }
-        
-        .chat-footer {
-            padding: 15px;
-            border-top: 1px solid #eee;
-            display: flex;
-            gap: 10px;
-            background-color: white;
-            position: relative;
-        }
-        
-        .chat-footer::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 0;
-            right: 0;
-            height: 10px;
-            background: linear-gradient(to bottom, rgba(249, 249, 249, 0), rgba(249, 249, 249, 0.9));
-            pointer-events: none;
-        }
-        
-        .chat-footer input {
-            flex: 1;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            outline: none;
-            transition: border-color 0.2s, box-shadow 0.2s;
-            font-size: 14px;
-        }
-        
-        .chat-footer input:focus {
-            border-color: var(--primary-color, #165a72);
-            box-shadow: 0 0 0 3px rgba(22, 90, 114, 0.1);
-        }
-        
-        .chat-footer button {
-            background: linear-gradient(135deg, var(--primary-color, #165a72), #1e7b98);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .chat-footer button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-        
-        .chat-footer button:active {
-            transform: scale(0.95);
-        }
-        
-        /* Make the chat button bounce to attract attention */
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-8px);}
-            60% {transform: translateY(-4px);}
-        }
-        
-        /* Add a notification badge to indicate new messages */
-        .chat-button::after {
-            content: "1";
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background-color: #FF5252;
-            color: white;
-            border-radius: 50%;
-            width: 22px;
-            height: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            animation: fadeIn 0.5s;
-            display: none; /* Initially hidden */
-        }
-        
-        .chat-button.has-notification::after {
-            display: flex;
-        }
-        
-        @keyframes fadeIn {
-            from {opacity: 0; transform: scale(0.5);}
-            to {opacity: 1; transform: scale(1);}
-        }
-        
-        /* Mobile Responsive Adjustments */
-        @media (max-width: 576px) {
-            .chat-popup {
-                bottom: 0;
-                right: 0;
-                width: 100%;
-                height: 100%;
-                border-radius: 0;
-            }
-            
-            .chat-header {
-                border-radius: 0;
-            }
-            
-            .chat-message {
-                max-width: 90%;
-            }
-            
-            .floating-chat {
-                bottom: 10px;
-                right: 10px;
-            }
-        }
-
-        /* Add this to your existing chat styles */
-        .emoji-button {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: #888;
-            transition: color 0.2s;
-            border-radius: 50%;
-        }
-        
-        .emoji-button:hover {
-            color: var(--primary-color, #165a72);
-            background-color: rgba(0,0,0,0.05);
-        }
-        
-        /* Add a welcome animation for the chat window */
-        @keyframes welcomeMessage {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        
-        .chat-message:first-child {
-            animation: welcomeMessage 0.5s ease-out;
-        }
-    </style>
-
-    <style>
-        /* Product Category Styles */
-        .product-category {
-            margin-bottom: 20px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .category-header {
-            padding: 15px;
-            background: #f8f9fa;
-            display: flex;
-            align-items: center;
-        }
-
-        .category-content {
-            padding: 15px;
-            display: block;
-        }
-
-        /* Subcategory Styles */
-        .subcategory-wrapper {
-            margin-bottom: 15px;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            overflow: hidden;
-        }
-
-        .subcategory-header {
-            padding: 12px 15px;
-            background: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .subcategory-header:hover {
-            background: #f8f9fa;
-        }
-
-        .subcategory-content {
-            display: none;
-            padding: 15px;
-            background: #fff;
-        }
-
-        .subcategory-content.active {
-            display: block;
-        }
-
-        /* Toggle Icon Styles */
-        .toggle-icon {
-            transition: transform 0.3s;
-        }
-
-        .active > .toggle-icon {
-            transform: rotate(180deg);
-        }
-
-        /* Product List Styles */
-        .product-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .product-list li {
-            padding: 10px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .product-list li:last-child {
-            border-bottom: none;
-        }
-
-        .product-name {
-            font-weight: bold;
-            display: block;
-        }
-
-        .product-description {
-            color: #666;
-            font-size: 0.9em;
-        }
-    </style>
-
-    <script>
+        // Function to toggle subcategories
         function toggleSubcategory(element) {
             const content = element.nextElementSibling;
-            const icon = element.querySelector('.toggle-icon');
+            const icon = element.querySelector('.toggle-icon i');
             
-            content.classList.toggle('active');
-            icon.classList.toggle('active');
-        }
-
-        // Initialize first subcategory as open
-        document.addEventListener('DOMContentLoaded', function() {
-            const firstSubcategory = document.querySelector('.subcategory-header');
-            if (firstSubcategory) {
-                toggleSubcategory(firstSubcategory);
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
             }
-        });
+        }
     </script>
+
+    <!-- JavaScript Files - use type="module" for ES6 module imports -->
+    <script type="module">
+        // Import main application script
+        import * as app from './js/scripts.js';
+        import { calculateCost } from './js/calculator.js';
+        
+        // Expose calculator function globally
+        window.calculateCost = calculateCost;
+    </script>
+
 </body>
 
 </html>

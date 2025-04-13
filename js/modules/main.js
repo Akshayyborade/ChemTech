@@ -1352,3 +1352,18 @@ const chatStyles = `
 const style = document.createElement('style');
 style.textContent += chatStyles;
 document.head.appendChild(style); 
+function toggleSubcategory(element) {
+    const content = element.nextElementSibling;
+    const icon = element.querySelector('.toggle-icon');
+
+    content.classList.toggle('active');
+    icon.classList.toggle('active');
+}
+
+// Initialize first subcategory as open
+document.addEventListener('DOMContentLoaded', function () {
+    const firstSubcategory = document.querySelector('.subcategory-header');
+    if (firstSubcategory) {
+        toggleSubcategory(firstSubcategory);
+    }
+});

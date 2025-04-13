@@ -55,7 +55,7 @@
     transition: transform 0.3s;
 }
 
-.active > .toggle-icon {
+.active>.toggle-icon {
     transform: rotate(180deg);
 }
 
@@ -83,4 +83,4 @@
 .product-description {
     color: #666;
     font-size: 0.9em;
-} 
+}
