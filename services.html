@@ -7,11 +7,224 @@
     <title>Our Services - Chemtech Coating Solutions</title>
     <meta name="description" content="Professional epoxy flooring and coating services for industrial, commercial and residential applications. View our comprehensive range of services." />
     
-    <!-- Add your existing CSS links -->
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/modules/features.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        .services-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Reso/services-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 150px 0;
+            color: white;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .services-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .service-category {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .service-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-header {
+            background: #002B5B;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .category-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .category-content {
+            padding: 1.5rem;
+        }
+
+        .service-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .service-list li {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .service-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #002B5B;
+            font-weight: bold;
+        }
+
+        .service-name {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.3rem;
+        }
+
+        .service-description {
+            display: block;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+
+        .detail-card {
+            text-align: center;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .detail-card:hover {
+            background: #002B5B;
+            color: white;
+        }
+
+        .detail-card:hover .detail-icon {
+            background: white;
+            color: #002B5B;
+        }
+
+        .detail-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: #002B5B;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .detail-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .detail-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .detail-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .process-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+            margin-top: 4rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: #002B5B;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            color: #002B5B;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Reso/cta-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .services-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -20,11 +233,11 @@
         <div class="container header-container">
             <div class="logo">
                 <div class="logo-icon">
-                    <img src="Reso/portfolio/logo.svg" alt="Chemtech Logo" width="80" height="80" style="object-fit: contain;">
+                    <img src="Reso/portfolio/logo.svg" alt="Chemtech Logo" width="80" height="80">
                 </div>
                 <div class="logo-text">
-                    <span class="logo-name" style="color: #002B5B; font-weight: bold;">CHEMTECH</span>
-                    <span class="logo-tagline" style="color: #335B7E; font-size: 0.8em;">COATING SOLUTIONS</span>
+                    <span class="logo-name">CHEMTECH</span>
+                    <span class="logo-tagline">COATING SOLUTIONS</span>
                 </div>
             </div>
             <div class="menu-btn" id="menuBtn">
@@ -34,7 +247,7 @@
                 <ul class="nav-links" id="navLinks">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="services.html" class="active">Services</a></li>
-                    <li><a href="index.html#products">Products</a></li>
+                    <li><a href="products.html">Products</a></li>
                     <li><a href="index.html#about">About</a></li>
                     <li><a href="index.html#contact" class="contact-btn">Contact Us</a></li>
                 </ul>
@@ -42,23 +255,21 @@
         </div>
     </header>
 
-    <!-- Breadcrumbs -->
-    <div class="breadcrumbs">
+    <!-- Hero Section -->
+    <section class="services-hero">
         <div class="container">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><span>Services</span></li>
-            </ul>
+            <h1>Our Services</h1>
+            <p>Professional coating solutions for every industry</p>
         </div>
-    </div>
+    </section>
 
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
             <div class="section-header animate-slide-up">
-                <span class="section-subtitle">Our Services</span>
-                <h2 class="section-title">Industrial & Commercial Flooring</h2>
-                <p class="section-description">Professional flooring solutions for industrial and commercial applications</p>
+                <span class="section-subtitle">What We Offer</span>
+                <h2 class="section-title">Comprehensive Coating Solutions</h2>
+                <p class="section-description">Expert services tailored to your specific needs</p>
             </div>
 
             <div class="services-grid">
@@ -70,16 +281,16 @@
                     <div class="category-content">
                         <ul class="service-list">
                             <li>
-                                <span class="service-name">Heavy Duty Epoxy Flooring System</span>
-                                <span class="service-description">Durable flooring solution for high-traffic industrial areas</span>
+                                <span class="service-name">Heavy Duty Epoxy Flooring</span>
+                                <span class="service-description">Durable flooring for high-traffic industrial areas</span>
                             </li>
                             <li>
-                                <span class="service-name">Self Level Epoxy Flooring System</span>
+                                <span class="service-name">Self Level Epoxy Flooring</span>
                                 <span class="service-description">Seamless and level flooring for commercial spaces</span>
                             </li>
                             <li>
-                                <span class="service-name">Chemical Resistance Epoxy Flooring</span>
-                                <span class="service-description">Specialized flooring resistant to chemical exposure</span>
+                                <span class="service-name">Chemical Resistant Coating</span>
+                                <span class="service-description">Protection against harsh chemicals</span>
                             </li>
                         </ul>
                     </div>
@@ -108,24 +319,24 @@
                     </div>
                 </div>
 
-                <!-- Maintenance Solutions -->
+                <!-- Specialized Solutions -->
                 <div class="service-category">
                     <div class="category-header">
-                        <h3>Maintenance Solutions</h3>
+                        <h3>Specialized Solutions</h3>
                     </div>
                     <div class="category-content">
                         <ul class="service-list">
                             <li>
-                                <span class="service-name">Automotive Industry</span>
-                                <span class="service-description">Specialized solutions for automotive facilities</span>
+                                <span class="service-name">Anti-Static Flooring</span>
+                                <span class="service-description">For electronics and sensitive areas</span>
                             </li>
                             <li>
-                                <span class="service-name">Steel & Fertilizer Plants</span>
-                                <span class="service-description">Heavy-duty industrial coatings</span>
+                                <span class="service-name">Clean Room Flooring</span>
+                                <span class="service-description">For pharmaceutical and healthcare</span>
                             </li>
                             <li>
-                                <span class="service-name">Paper & Pulp Mills</span>
-                                <span class="service-description">Chemical resistant flooring solutions</span>
+                                <span class="service-name">Thermal Shock Resistant</span>
+                                <span class="service-description">For extreme temperature variations</span>
                             </li>
                         </ul>
                     </div>
@@ -134,8 +345,57 @@
         </div>
     </section>
 
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Our Process</span>
+                <h2 class="section-title">How We Work</h2>
+                <p class="section-description">Our proven process ensures quality results every time</p>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3 class="step-title">Initial Consultation</h3>
+                    <p>We assess your needs and provide expert recommendations</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="step-title">Surface Preparation</h3>
+                    <p>Thorough preparation for optimal adhesion</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-paint-roller"></i>
+                    </div>
+                    <h3 class="step-title">Application</h3>
+                    <p>Professional application with attention to detail</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="step-title">Quality Check</h3>
+                    <p>Final inspection and client approval</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Additional Service Details -->
-    <section class="service-details">
+    <section class="details-section">
         <div class="container">
             <div class="details-grid">
                 <div class="detail-card">
@@ -172,7 +432,7 @@
                     <ul>
                         <li>Anti-Static Flooring</li>
                         <li>Chemical Resistant Coatings</li>
-                        <li>Thermal Shock Resistant Systems</li>
+                        <li>Thermal Shock Resistant</li>
                         <li>Clean Room Flooring</li>
                     </ul>
                 </div>
@@ -213,7 +473,7 @@
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="services.html">Services</a></li>
-                        <li><a href="index.html#products">Products</a></li>
+                        <li><a href="products.html">Products</a></li>
                         <li><a href="index.html#about">About</a></li>
                         <li><a href="index.html#contact">Contact</a></li>
                     </ul>
