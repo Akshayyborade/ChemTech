@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | Chemtech Coating Solutions</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore our comprehensive range of epoxy coating solutions. From industrial flooring to decorative finishes, find the perfect coating for your needs.">
+    <meta name="keywords" content="epoxy products, industrial coatings, floor coatings, epoxy paint, waterproof coating">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="Reso/portfolio/logo.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="Reso/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Reso/favicon-16x16.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modules/products.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .products-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('Reso/products-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 150px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .product-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .product-features li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .product-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+        }
+
+        .product-cta {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid #002B5B;
+            border-radius: 25px;
+            background: transparent;
+            color: #002B5B;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #002B5B;
+            color: white;
+        }
+
+        .color-selector {
+            background: #f5f5f5;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filters {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header (Same as index.html) -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="Reso/portfolio/logo.svg" alt="Chemtech Logo" width="80" height="80">
+                </div>
+                <div class="logo-text">
+                    <span class="logo-name">CHEMTECH</span>
+                    <span class="logo-tagline">COATING SOLUTIONS</span>
+                </div>
+            </div>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="products.html" class="nav-link active">Products</a></li>
+                    <li><a href="index.html#about" class="nav-link">About</a></li>
+                    <li><a href="index.html#contact" class="nav-link contact-btn">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="products-hero">
+        <div class="container">
+            <h1>Our Product Range</h1>
+            <p>Discover our comprehensive range of high-performance coating solutions</p>
+        </div>
+    </section>
+
+    <!-- Product Filters -->
+    <section class="filters">
+        <button class="filter-btn active" data-filter="all">All Products</button>
+        <button class="filter-btn" data-filter="epoxy-floor">Epoxy Floor</button>
+        <button class="filter-btn" data-filter="epoxy-paint">Epoxy Paint</button>
+        <button class="filter-btn" data-filter="pu-coating">PU Coating</button>
+        <button class="filter-btn" data-filter="joint-filling">Joint Filling</button>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="product-grid">
+        <!-- Epoxy Floor Products -->
+        <div class="product-card" data-category="epoxy-floor">
+            <div class="product-image" style="background-image: url('Reso/products/prime-coat.jpg')"></div>
+            <div class="product-content">
+                <div class="product-category">Epoxy Floor Coating</div>
+                <h3 class="product-title">Prime Coat Series</h3>
+                <ul class="product-features">
+                    <li>Superior adhesion properties</li>
+                    <li>Chemical resistant</li>
+                    <li>Multiple variants available</li>
+                </ul>
+                <div class="product-cta">
+                    <a href="#contact" class="btn btn-primary">Get Quote</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="epoxy-floor">
+            <div class="product-image" style="background-image: url('Reso/products/screed-coat.jpg')"></div>
+            <div class="product-content">
+                <div class="product-category">Epoxy Floor Coating</div>
+                <h3 class="product-title">Screed Coat Series</h3>
+                <ul class="product-features">
+                    <li>High load bearing capacity</li>
+                    <li>Excellent durability</li>
+                    <li>Perfect for industrial use</li>
+                </ul>
+                <div class="product-cta">
+                    <a href="#contact" class="btn btn-primary">Get Quote</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Epoxy Paint Products -->
+        <div class="product-card" data-category="epoxy-paint">
+            <div class="product-image" style="background-image: url('Reso/products/2pack-primer.jpg')"></div>
+            <div class="product-content">
+                <div class="product-category">Epoxy Paint</div>
+                <h3 class="product-title">2 Pack Epoxy Primer</h3>
+                <ul class="product-features">
+                    <li>High-performance adhesion</li>
+                    <li>Perfect surface preparation</li>
+                    <li>Long-lasting protection</li>
+                </ul>
+                <div class="product-cta">
+                    <a href="#contact" class="btn btn-primary">Get Quote</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PU Coating Products -->
+        <div class="product-card" data-category="pu-coating">
+            <div class="product-image" style="background-image: url('Reso/products/pu-coating.jpg')"></div>
+            <div class="product-content">
+                <div class="product-category">PU Coating</div>
+                <h3 class="product-title">PU Coating System</h3>
+                <ul class="product-features">
+                    <li>UV resistant</li>
+                    <li>Flexible and durable</li>
+                    <li>Weather resistant</li>
+                </ul>
+                <div class="product-cta">
+                    <a href="#contact" class="btn btn-primary">Get Quote</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Joint Filling Products -->
+        <div class="product-card" data-category="joint-filling">
+            <div class="product-image" style="background-image: url('Reso/products/joint-filling.jpg')"></div>
+            <div class="product-content">
+                <div class="product-category">Joint Filling</div>
+                <h3 class="product-title">Expansion Joint Solutions</h3>
+                <ul class="product-features">
+                    <li>High flexibility</li>
+                    <li>Excellent bonding</li>
+                    <li>Weather resistant</li>
+                </ul>
+                <div class="product-cta">
+                    <a href="#contact" class="btn btn-primary">Get Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Color Selector Section -->
+    <section class="color-selector">
+        <div class="container">
+            <div class="section-header">
+                <h2>Available Colors & Finishes</h2>
+                <p>Choose from our wide range of colors and finishes</p>
+            </div>
+            
+            <div class="color-categories">
+                <button class="category-btn active" data-category="solid">Solid Colors</button>
+                <button class="category-btn" data-category="metallic">Metallic Finishes</button>
+                <button class="category-btn" data-category="flake">Decorative Flakes</button>
+                <button class="category-btn" data-category="quartz">Quartz Systems</button>
+            </div>
+
+            <!-- Color collections will be dynamically loaded here -->
+            <div id="colorCollections"></div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as index.html) -->
+    <footer>
+        <!-- Footer content -->
+    </footer>
+
+    <script>
+        // Product filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                productCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Color selector functionality
+        const colorBtns = document.querySelectorAll('.category-btn');
+        colorBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                colorBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                // Add color switching logic here
+            });
+        });
+    </script>
+</body>
+</html> 
