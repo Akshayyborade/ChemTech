@@ -263,19 +263,41 @@ header.sticky {
 }
 
 .menu-btn {
-    display: none;
+    display: none; /* Hidden by default, shown in mobile view */
+    font-size: 24px;
+    color: var(--primary-color);
+    background: transparent;
+    border: none;
     cursor: pointer;
-    padding: 10px;
-    z-index: 1000;
+    transition: transform 0.3s;
 }
 
 .menu-btn i {
-    font-size: 24px;
-    color: #165a72;
+    transition: transform 0.3s ease;
 }
 
 .menu-btn.active i {
-    color: #29b6f6;
+    transform: rotate(90deg);
+}
+
+/* Chrome-specific fixes for mobile menu */
+@media screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 0) {
+    .menu-btn {
+        padding: 10px;
+        margin: -10px; /* Expand clickable area without affecting layout */
+    }
+    
+    /* Ensure the menu toggle animation works properly */
+    .menu-btn i {
+        display: block; /* Ensure proper rendering */
+        transform-origin: center;
+    }
+    
+    /* Fix for nav transition in Chrome */
+    .nav-links {
+        -webkit-transition: -webkit-transform 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out;
+    }
 }
 
 /* Hero Section Redesign */
@@ -1580,6 +1602,9 @@ footer {
         display: block;
         cursor: pointer;
         z-index: 1001; /* Higher than nav-links */
+        -webkit-tap-highlight-color: transparent; /* Remove highlight on tap */
+        position: relative; /* Ensure position for z-index */
+        touch-action: manipulation; /* Improve touch handling */
     }
 
     .nav-links {
@@ -1597,10 +1622,15 @@ footer {
         z-index: 1000;
         overflow-y: auto;
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        -webkit-overflow-scrolling: touch; /* Smoother scrolling on iOS */
+        transform: translateX(-100%); /* Use transform instead of left for better performance */
+        will-change: transform; /* Optimize for animation */
+        backface-visibility: hidden; /* Prevent flickering */
     }
 
     .nav-links.active {
         left: 0;
+        transform: translateX(0); /* Reset transform on active */
         display: flex; /* Ensure it's displayed when active */
     }
 
@@ -1612,8 +1642,9 @@ footer {
     
     .nav-links a {
         display: block;
-        padding: 10px;
+        padding: 15px; /* Larger tap target */
         font-size: 18px;
+        touch-action: manipulation; /* Improve touch handling */
     }
 
     .nav-links .contact-btn {

@@ -76,47 +76,80 @@ function initMobileNavigation() {
         return;
     }
     
-    // Toggle menu when menu button is clicked
-    menuBtn.addEventListener('click', function(e) {
-        e.stopPropagation(); // Prevent document click from firing
-        navLinks.classList.toggle('active');
-        this.classList.toggle('active');
-        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-        console.log('Menu button clicked, navLinks active:', navLinks.classList.contains('active')); // Debug
-    });
-
+    // Create a simple flag to track menu state
+    let menuIsOpen = false;
+    
+    // Handle menu toggle with both click and touch events
+    function toggleMenu(e) {
+        // Prevent default behavior and stop propagation
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        menuIsOpen = !menuIsOpen;
+        
+        // Force repaint for Chrome mobile
+        navLinks.style.display = 'flex';
+        
+        // Force a browser reflow
+        void navLinks.offsetWidth;
+        
+        // Apply classes
+        if (menuIsOpen) {
+            navLinks.classList.add('active');
+            menuBtn.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        } else {
+            navLinks.classList.remove('active');
+            menuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        console.log('Menu toggled, is now:', menuIsOpen ? 'open' : 'closed');
+    }
+    
+    // Add both touch and click events for better mobile support
+    menuBtn.addEventListener('click', toggleMenu);
+    menuBtn.addEventListener('touchstart', toggleMenu, {passive: false});
+    
     // Close mobile menu when clicking on a nav link
     const mobileNavLinks = document.querySelectorAll('.nav-links a');
     mobileNavLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        function handleLinkClick(e) {
+            // Always close the menu
+            menuIsOpen = false;
             navLinks.classList.remove('active');
             menuBtn.classList.remove('active');
             document.body.style.overflow = '';
             
             // Use smooth scroll for navigation links
-            if (this.getAttribute('href').startsWith('#')) {
+            if (link.getAttribute('href').startsWith('#')) {
                 e.preventDefault();
-                smoothScroll(this.getAttribute('href'));
+                smoothScroll(link.getAttribute('href'));
             }
-        });
+        }
+        
+        link.addEventListener('click', handleLinkClick);
+        link.addEventListener('touchstart', handleLinkClick, {passive: false});
     });
     
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (navLinks.classList.contains('active') && 
-            !menuBtn.contains(e.target) && 
-            !navLinks.contains(e.target)) {
+    // Close menu when clicking/touching anywhere on document
+    function handleDocumentClick(e) {
+        if (!menuIsOpen) return;
+        
+        // Check if click/touch is outside menu and button
+        if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+            menuIsOpen = false;
             navLinks.classList.remove('active');
             menuBtn.classList.remove('active');
             document.body.style.overflow = '';
-            console.log('Clicked outside, closing menu'); // Debug
+            console.log('Clicked outside, closing menu');
         }
-    });
-
-    // Prevent clicks inside the menu from closing it
-    navLinks.addEventListener('click', (e) => {
-        e.stopPropagation();
-    });
+    }
+    
+    document.addEventListener('click', handleDocumentClick);
+    document.addEventListener('touchstart', handleDocumentClick, {passive: true});
 }
 
 // Scroll event handlers
