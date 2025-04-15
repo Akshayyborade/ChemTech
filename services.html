@@ -224,6 +224,60 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Add these styles for mobile menu */
+        .menu-btn {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #002B5B;
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: #002B5B;
+                flex-direction: column;
+                padding: 2rem;
+                transition: 0.3s;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .nav-links a {
+                color: white;
+                font-size: 1.2rem;
+            }
+
+            .nav-links a:hover {
+                color: #4CAF50;
+            }
+
+            .contact-btn {
+                background: transparent;
+                border: 2px solid white;
+            }
+
+            .contact-btn:hover {
+                background: white;
+                color: #002B5B;
+            }
+        }
     </style>
 </head>
 
@@ -495,6 +549,33 @@
 
     <!-- JavaScript -->
     <script src="js/scripts.js"></script>
+    <script>
+        // Mobile menu functionality
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuBtn.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+                menuBtn.classList.remove('active');
+            }
+        });
+
+        // Close menu when clicking a link
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuBtn.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 
 </html> 

@@ -1080,6 +1080,11 @@
 
     <!-- Add EmailJS CDN -->
     <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
+        })();
+    </script>
 
     <!-- Core JavaScript functionality -->
     <script>
@@ -1096,6 +1101,44 @@
             });
         }
         
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+
+            // Get form data
+            const formData = {
+                name: this.querySelector('[name="name"]').value,
+                email: this.querySelector('[name="email"]').value,
+                phone: this.querySelector('[name="phone"]').value,
+                service: this.querySelector('[name="service"]').value,
+                message: this.querySelector('[name="message"]').value
+            };
+
+            // Send email using EmailJS
+            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", formData)
+                .then(function(response) {
+                    // Show success message
+                    alert('Thank you! Your message has been sent successfully.');
+                    // Reset form
+                    e.target.reset();
+                }, function(error) {
+                    // Show error message
+                    alert('There was an error sending your message. Please try again later.');
+                    console.error('EmailJS Error:', error);
+                })
+                .finally(function() {
+                    // Reset button state
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
+        });
+
         // Function to toggle subcategories
         function toggleSubcategory(element) {
             const content = element.nextElementSibling;
